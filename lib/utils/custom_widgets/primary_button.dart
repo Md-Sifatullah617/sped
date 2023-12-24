@@ -10,6 +10,9 @@ class PrimaryBtn extends StatelessWidget {
   final double? hpadd;
   final IconData? icon;
   final Color? iconColor;
+  final double? height;
+  final double? width;
+  final double? radius;
   const PrimaryBtn({
     super.key,
     required this.title,
@@ -19,6 +22,9 @@ class PrimaryBtn extends StatelessWidget {
     this.icon,
     this.titleColor,
     this.iconColor,
+    this.height,
+    this.width,
+    this.radius,
   });
 
   @override
@@ -34,9 +40,11 @@ class PrimaryBtn extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: Get.height * 0.02,
           ),
-          minimumSize: Size(Get.width, Get.height * 0.06),
+          maximumSize: Size(width ?? Get.width, height ?? Get.height * 0.06),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(
+              radius ?? Get.width * 0.02,
+            ),
           ),
         ),
         child: Row(
