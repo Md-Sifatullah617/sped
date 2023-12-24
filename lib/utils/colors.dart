@@ -4,6 +4,7 @@ class AppColors {
   static const Color spBG = Color(0xFF62C8D7);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color facebookColor = Color(0xFF3B5998);
   static const Color logoColor = Color(0xFFFF6600);
   static const Color redColor = Color(0xFFE02020);
   static const Color greyColor = Color(0xFFE0E0E0);
