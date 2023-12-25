@@ -109,6 +109,80 @@ class DiscoverScreen extends StatelessWidget {
               ],
             ),
           ),
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: Get.width * 0.05,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Fastest Delivery",
+                  style: TextStyle(
+                    color: AppColors.black,
+                    fontSize: Get.width * 0.05,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                PrimaryBtn(
+                    title: "See All",
+                    titleColor: AppColors.logoColor,
+                    width: Get.width * 0.22,
+                    btnColor: AppColors.btnColor2,
+                    onPressed: () {}),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: Get.width * 0.05,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Popular Items",
+                      style: TextStyle(
+                        color: AppColors.black,
+                        fontSize: Get.width * 0.05,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    PrimaryBtn(
+                        title: "See All",
+                        titleColor: AppColors.logoColor,
+                        width: Get.width * 0.22,
+                        btnColor: AppColors.btnColor2,
+                        onPressed: () {}),
+                  ],
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                ListView.builder(
+                  itemCount: controller.fastestDeliveryList.length,
+                  itemBuilder: (context, index) => Container(
+                    height: Get.height * 2,
+                    width: Get.width * 0.7,
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(Get.width * 0.05),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.greyColor.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     ));
