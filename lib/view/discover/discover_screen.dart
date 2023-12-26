@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
+import 'package:sped/utils/photos.dart';
 import 'package:sped/view/discover/controller/discrover_controller.dart';
 
 class DiscoverScreen extends StatelessWidget {
@@ -15,38 +16,40 @@ class DiscoverScreen extends StatelessWidget {
           backgroundColor: AppColors.white,
           elevation: 0,
           leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.black,
+            icon: Image.asset(
+              locationIndicator,
             ),
-            onPressed: () {
-              Get.back();
-            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(AppColors.btnColor2),
+            ),
+            onPressed: () {},
           ),
-          title: Text(
-            "Discover",
-            style: TextStyle(
-              color: AppColors.black,
-              fontSize: Get.width * 0.05,
-              fontWeight: FontWeight.bold,
-            ),
+          title: Row(
+            children: [
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Home",
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    TextSpan(
+                      text: ", Jl. Soekarno Hatta 15A",
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: Get.width * 0.02,
+              ),
+              Image.asset(
+                dropDownArrow,
+              )
+            ],
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                color: AppColors.black,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.notifications_none,
-                color: AppColors.black,
-              ),
-              onPressed: () {},
-            ),
-          ],
         ),
         body: GetBuilder<DiscoverController>(
           init: DiscoverController(),
@@ -56,12 +59,12 @@ class DiscoverScreen extends StatelessWidget {
                 //carousel slider and dot indicator
                 Container(
                   width: Get.width,
-                  height: Get.height * 0.4,
+                  height: Get.height * 0.33,
                   child: Stack(
                     children: [
                       //carousel slider
                       Positioned(
-                        top: Get.height * 0.05,
+                        top: Get.height * 0.01,
                         left: Get.width * 0.05,
                         right: Get.width * 0.05,
                         child: CarouselSlider(
@@ -120,7 +123,7 @@ class DiscoverScreen extends StatelessWidget {
                       ),
                       // Custom dot indicator
                       Positioned(
-                        top: Get.height * 0.35,
+                        top: Get.height * 0.3,
                         left: 0,
                         right: 0,
                         child: Row(
