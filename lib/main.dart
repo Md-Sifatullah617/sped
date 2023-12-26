@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/routes/initial_bingings.dart';
-
 import 'utils/routes/app_routes.dart';
 
 void main() {
