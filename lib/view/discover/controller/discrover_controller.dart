@@ -38,4 +38,21 @@ class DiscoverController extends GetxController {
       "rating": "3.5",
     },
   ];
+  List popularList = [
+    {
+      "image": food3,
+      "title": "Noodle",
+      "type": "Assan wok",
+    },
+    {
+      "image": food4,
+      "title": "Burger",
+      "type": "Grill and chill",
+    },
+    {
+      "image": food5,
+      "title": "Pizza",
+      "type": "American pizza",
+    },
+  ];
 }
