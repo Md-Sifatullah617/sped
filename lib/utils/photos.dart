@@ -6,6 +6,7 @@ String food2 = "assets/images/food2.jpeg";
 String food3 = "assets/images/food3.jpeg";
 String food4 = "assets/images/food4.jpeg";
 String food5 = "assets/images/food5.jpeg";
+String avatar = "assets/images/sifat.png";
 
 //icons
 String googleIcons = "assets/icons/Group 6.png";
@@ -18,3 +19,10 @@ String restaurantIcon = "assets/icons/Icon (4).png";
 String searchIcon = "assets/icons/Icon (5).png";
 String storeIcon = "assets/icons/Icon (6).png";
 String profileIcon = "assets/icons/Icon (7).png";
+String documentIcon = "assets/icons/document-text.png";
+String logoutIcon = "assets/icons/logout.png";
+String mailIcon = "assets/icons/Icon (8).png";
+String settingsIcon = "assets/icons/Icon (9).png";
+String faqIcon = "assets/icons/Icon (10).png";
+String locationindicator2 = "assets/icons/Icon (11).png";
+String walletIcon = "assets/icons/wallet-2.png";

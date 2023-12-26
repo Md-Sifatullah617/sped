@@ -9,10 +9,12 @@ class PrimaryBtn extends StatelessWidget {
   final Function() onPressed;
   final double? hpadd;
   final IconData? icon;
+  final String? iconImage;
   final Color? iconColor;
   final double? height;
   final double? width;
   final double? radius;
+  final Color? borderColor;
   const PrimaryBtn({
     super.key,
     required this.title,
@@ -25,6 +27,8 @@ class PrimaryBtn extends StatelessWidget {
     this.height,
     this.width,
     this.radius,
+    this.iconImage,
+    this.borderColor,
   });
 
   @override
@@ -36,17 +40,21 @@ class PrimaryBtn extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: btnColor ?? AppColors.logoColor,
-          padding: EdgeInsets.symmetric(
-            horizontal: Get.height * 0.02,
-          ),
-          maximumSize: Size(width ?? Get.width, height ?? Get.height * 0.06),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              radius ?? Get.width * 0.02,
+            backgroundColor: btnColor ?? AppColors.logoColor,
+            padding: EdgeInsets.symmetric(
+              horizontal: Get.height * 0.02,
             ),
-          ),
-        ),
+            maximumSize: Size(width ?? Get.width, height ?? Get.height * 0.06),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                radius ?? Get.width * 0.02,
+              ),
+            ),
+            side: borderColor == null
+                ? BorderSide.none
+                : BorderSide(
+                    color: borderColor!,
+                  )),
         child: Row(
           children: [
             if (icon != null)
@@ -54,6 +62,7 @@ class PrimaryBtn extends StatelessWidget {
                 icon,
                 color: iconColor ?? AppColors.white,
               ),
+            if (iconImage != null) Image.asset(iconImage!),
             Spacer(),
             Text(
               title,
