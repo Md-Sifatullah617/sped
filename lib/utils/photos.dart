@@ -30,3 +30,4 @@ String settingsIcon = "assets/icons/Icon (9).png";
 String faqIcon = "assets/icons/Icon (10).png";
 String locationindicator2 = "assets/icons/Icon (11).png";
 String walletIcon = "assets/icons/wallet-2.png";
+String discountIcon = "assets/icons/ticket-discount.png";
