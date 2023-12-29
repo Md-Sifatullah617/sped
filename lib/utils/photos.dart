@@ -7,6 +7,10 @@ String food3 = "assets/images/food3.jpeg";
 String food4 = "assets/images/food4.jpeg";
 String food5 = "assets/images/food5.jpeg";
 String avatar = "assets/images/sifat.png";
+String rFood1 = "assets/images/food12.png";
+String rFood2 = "assets/images/food13.png";
+String rFood3 = "assets/images/food14.png";
+String rFood4 = "assets/images/food15.png";
 
 //icons
 String googleIcons = "assets/icons/Group 6.png";
