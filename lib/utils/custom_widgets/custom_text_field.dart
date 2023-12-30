@@ -1,5 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -7,7 +8,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? txtController;
   final String hintText;
   final IconData? prefixIcon;
-  final String title;
+  final String? title;
   final Widget? suffixWidget;
   final bool? obscureText;
   final String? Function(String?)? validator;
@@ -16,7 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.txtController,
     required this.hintText,
     this.prefixIcon,
-    required this.title,
+    this.title,
     this.isCountryPicker,
     this.suffixWidget,
     this.obscureText,
@@ -28,10 +29,16 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // title == '' ? const SizedBox() : Text(title, style: titleStyle),
-        // SizedBox(
-        //   height: Get.height * 0.01,
-        // ),
+        if (title != null)
+          Text(
+            title!,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: AppColors.greyColor,
+                ),
+          ),
+        SizedBox(
+          height: Get.height * 0.01,
+        ),
         TextFormField(
           controller: txtController,
           obscureText: obscureText ?? false,
@@ -55,11 +62,13 @@ class CustomTextField extends StatelessWidget {
             hintText: hintText,
             hintStyle: Theme.of(context).textTheme.bodyLarge,
             border: OutlineInputBorder(
-              borderSide: BorderSide.none,
+              borderSide: const BorderSide(
+                color: AppColors.greyColor,
+              ),
               borderRadius: BorderRadius.circular(10),
             ),
-            fillColor: AppColors.fedBlue,
-            filled: true,
+            // fillColor: AppColors.fedBlue,
+            // filled: true,
           ),
           validator: validator,
         ),

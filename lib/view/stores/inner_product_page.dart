@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
+import 'package:sped/utils/custom_widgets/custom_tag.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
+import 'package:sped/utils/routes/app_routes.dart';
 
 class InnerProductPage extends StatelessWidget {
   const InnerProductPage({super.key});
@@ -111,7 +113,7 @@ class InnerProductPage extends StatelessWidget {
             onPressed: () {},
             title: "More Info",
             titleColor: AppColors.logoColor,
-            width: Get.width * 0.265,
+            width: Get.width * 0.269,
             height: Get.height * 0.04,
             btnColor: AppColors.btnColor2,
           ),
@@ -129,7 +131,7 @@ class InnerProductPage extends StatelessWidget {
             onPressed: () {},
             title: "Change",
             titleColor: AppColors.logoColor,
-            width: Get.width * 0.225,
+            width: Get.width * 0.228,
             height: Get.height * 0.04,
             btnColor: AppColors.btnColor2,
           ),
@@ -146,7 +148,7 @@ class InnerProductPage extends StatelessWidget {
             onPressed: () {},
             title: "Start Now",
             titleColor: AppColors.logoColor,
-            width: Get.width * 0.27,
+            width: Get.width * 0.275,
             height: Get.height * 0.04,
             btnColor: AppColors.btnColor2,
           ),
@@ -175,39 +177,13 @@ class InnerProductPage extends StatelessWidget {
           title: "Free delivery",
           titleColor: AppColors.logoColor,
           isLeftAligned: false,
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(AppRoutes.login);
+          },
           width: Get.width * 0.9,
           btnColor: AppColors.btnColor2,
         )
       ],
     ));
-  }
-}
-
-class CustomTags extends StatelessWidget {
-  final String tagName;
-  const CustomTags({
-    super.key,
-    required this.tagName,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: Get.width * 0.01, vertical: Get.height * 0.005),
-      padding: EdgeInsets.symmetric(
-          horizontal: Get.width * 0.03, vertical: Get.height * 0.005),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        tagName,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
   }
 }
