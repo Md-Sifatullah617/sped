@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                 color: AppColors.greyColor,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             PrimaryBtn(title: "Send magic link", onPressed: () {})
           ],
         ),
