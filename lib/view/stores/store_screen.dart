@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
+import 'package:sped/utils/routes/app_routes.dart';
 import 'package:sped/view/restaurants/controller/restaurant_controller.dart';
 import '../../utils/colors.dart';
 
@@ -182,211 +183,217 @@ class StoresScreen extends StatelessWidget {
                     ),
                     ...List.generate(
                       controller.allRestaurantList.length,
-                      (index) => Container(
-                          height: Get.height * 0.37,
-                          width: Get.width,
-                          margin: EdgeInsets.symmetric(
-                            horizontal: Get.width * 0.05,
-                            vertical: Get.height * 0.02,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius:
-                                BorderRadius.circular(Get.width * 0.05),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.greyColor.withOpacity(0.5),
-                                spreadRadius: 1,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft:
-                                          Radius.circular(Get.width * 0.05),
-                                      topRight:
-                                          Radius.circular(Get.width * 0.05),
-                                    ),
-                                    child: Image.asset(
-                                      controller.allRestaurantList[index]
-                                          ["image"],
-                                      height: Get.height * 0.25,
-                                      width: Get.width,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  //isfav icon top right corner
-                                  Positioned(
-                                    top: Get.height * 0.01,
-                                    right: Get.width * 0.06,
-                                    child: Container(
-                                      height: Get.height * 0.05,
-                                      width: Get.width * 0.1,
-                                      decoration: const BoxDecoration(
-                                        color: AppColors.logoColor,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: AppColors.white,
-                                        size: Get.width * 0.07,
-                                      ),
-                                    ),
-                                  ),
-                                  //grocery tag top left corner
-                                  Positioned(
-                                    top: Get.height * 0.01,
-                                    left: Get.width * 0.06,
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: Get.width * 0.02,
-                                        vertical: Get.height * 0.005,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            Get.width * 0.03),
-                                      ),
-                                      child: Text(
-                                        "Grocery",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall,
-                                      ),
-                                    ),
-                                  ),
-                                  //3cents off delivery tag bottom left corner
-                                  Positioned(
-                                    bottom: Get.height * 0.01,
-                                    right: 0,
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: Get.width * 0.02,
-                                        vertical: Get.height * 0.005,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.logoColor,
-                                        borderRadius: BorderRadius.only(
-                                          topLeft:
-                                              Radius.circular(Get.width * 0.03),
-                                          bottomLeft:
-                                              Radius.circular(Get.width * 0.03),
-                                        ),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            "3 cents off delivery",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleSmall!
-                                                .copyWith(
-                                                  color: AppColors.white,
-                                                ),
-                                          ),
-                                          SizedBox(
-                                            width: Get.width * 0.02,
-                                          ),
-                                          Image.asset(
-                                            discountIcon,
-                                            height: Get.height * 0.02,
-                                            width: Get.width * 0.04,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.01,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: Get.width * 0.03,
+                      (index) => InkWell(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.innerProductPage);
+                        },
+                        child: Container(
+                            height: Get.height * 0.37,
+                            width: Get.width,
+                            margin: EdgeInsets.symmetric(
+                              horizontal: Get.width * 0.05,
+                              vertical: Get.height * 0.02,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius:
+                                  BorderRadius.circular(Get.width * 0.05),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.greyColor.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Stack(
                                   children: [
-                                    Text(
-                                      controller.allRestaurantList[index]
-                                          ["title"],
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge!
-                                          .copyWith(
-                                            color: AppColors.black,
-                                            fontSize: Get.width * 0.04,
-                                            fontWeight: FontWeight.bold,
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft:
+                                            Radius.circular(Get.width * 0.05),
+                                        topRight:
+                                            Radius.circular(Get.width * 0.05),
+                                      ),
+                                      child: Image.asset(
+                                        controller.allRestaurantList[index]
+                                            ["image"],
+                                        height: Get.height * 0.25,
+                                        width: Get.width,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    //isfav icon top right corner
+                                    Positioned(
+                                      top: Get.height * 0.01,
+                                      right: Get.width * 0.06,
+                                      child: Container(
+                                        height: Get.height * 0.05,
+                                        width: Get.width * 0.1,
+                                        decoration: const BoxDecoration(
+                                          color: AppColors.logoColor,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Icon(
+                                          Icons.favorite,
+                                          color: AppColors.white,
+                                          size: Get.width * 0.07,
+                                        ),
+                                      ),
+                                    ),
+                                    //grocery tag top left corner
+                                    Positioned(
+                                      top: Get.height * 0.01,
+                                      left: Get.width * 0.06,
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: Get.width * 0.02,
+                                          vertical: Get.height * 0.005,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.white,
+                                          borderRadius: BorderRadius.circular(
+                                              Get.width * 0.03),
+                                        ),
+                                        child: Text(
+                                          "Grocery",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall,
+                                        ),
+                                      ),
+                                    ),
+                                    //3cents off delivery tag bottom left corner
+                                    Positioned(
+                                      bottom: Get.height * 0.01,
+                                      right: 0,
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: Get.width * 0.02,
+                                          vertical: Get.height * 0.005,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.logoColor,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(
+                                                Get.width * 0.03),
+                                            bottomLeft: Radius.circular(
+                                                Get.width * 0.03),
                                           ),
-                                    ),
-                                    SizedBox(
-                                      height: Get.height * 0.01,
-                                    ),
-                                    Text(
-                                      controller.allRestaurantList[index]
-                                          ["description"],
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .copyWith(
-                                            fontSize: Get.width * 0.03,
-                                          ),
-                                    ),
-                                    SizedBox(
-                                      height: Get.height * 0.01,
-                                    ),
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.delivery_dining,
-                                          color: AppColors.logoColor,
                                         ),
-                                        Text(
-                                          controller.allRestaurantList[index]
-                                              ["cost"],
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "3 cents off delivery",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .copyWith(
+                                                    color: AppColors.white,
+                                                  ),
+                                            ),
+                                            SizedBox(
+                                              width: Get.width * 0.02,
+                                            ),
+                                            Image.asset(
+                                              discountIcon,
+                                              height: Get.height * 0.02,
+                                              width: Get.width * 0.04,
+                                            ),
+                                          ],
                                         ),
-                                        const Spacer(),
-                                        const Icon(
-                                          Icons.timer,
-                                          color: AppColors.logoColor,
-                                        ),
-                                        Text(
-                                          controller.allRestaurantList[index]
-                                              ["time"],
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        const Spacer(),
-                                        const Icon(
-                                          Icons.star,
-                                          color: AppColors.logoColor,
-                                        ),
-                                        Text(
-                                          controller.allRestaurantList[index]
-                                              ["rating"],
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          )),
+                                SizedBox(
+                                  height: Get.height * 0.01,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: Get.width * 0.03,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        controller.allRestaurantList[index]
+                                            ["title"],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge!
+                                            .copyWith(
+                                              color: AppColors.black,
+                                              fontSize: Get.width * 0.04,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                      SizedBox(
+                                        height: Get.height * 0.01,
+                                      ),
+                                      Text(
+                                        controller.allRestaurantList[index]
+                                            ["description"],
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              fontSize: Get.width * 0.03,
+                                            ),
+                                      ),
+                                      SizedBox(
+                                        height: Get.height * 0.01,
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.delivery_dining,
+                                            color: AppColors.logoColor,
+                                          ),
+                                          Text(
+                                            controller.allRestaurantList[index]
+                                                ["cost"],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ),
+                                          const Spacer(),
+                                          const Icon(
+                                            Icons.timer,
+                                            color: AppColors.logoColor,
+                                          ),
+                                          Text(
+                                            controller.allRestaurantList[index]
+                                                ["time"],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ),
+                                          const Spacer(),
+                                          const Icon(
+                                            Icons.star,
+                                            color: AppColors.logoColor,
+                                          ),
+                                          Text(
+                                            controller.allRestaurantList[index]
+                                                ["rating"],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )),
+                      ),
                     )
                   ]),
             );

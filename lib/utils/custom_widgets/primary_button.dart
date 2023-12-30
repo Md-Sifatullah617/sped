@@ -14,6 +14,8 @@ class PrimaryBtn extends StatelessWidget {
   final double? height;
   final double? width;
   final double? radius;
+  final bool? isLeftAligned;
+  final bool? isRightAligned;
   final Color? borderColor;
   const PrimaryBtn({
     super.key,
@@ -29,6 +31,8 @@ class PrimaryBtn extends StatelessWidget {
     this.radius,
     this.iconImage,
     this.borderColor,
+    this.isLeftAligned,
+    this.isRightAligned,
   });
 
   @override
@@ -37,41 +41,44 @@ class PrimaryBtn extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: hpadd ?? 0,
       ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-            backgroundColor: btnColor ?? AppColors.logoColor,
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.height * 0.02,
-            ),
-            maximumSize: Size(width ?? Get.width, height ?? Get.height * 0.06),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                radius ?? Get.width * 0.02,
+      child: SizedBox(
+        height: height ?? Get.height * 0.06,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+              backgroundColor: btnColor ?? AppColors.logoColor,
+              padding: EdgeInsets.symmetric(
+                horizontal: Get.height * 0.02,
               ),
-            ),
-            side: borderColor == null
-                ? BorderSide.none
-                : BorderSide(
-                    color: borderColor!,
-                  )),
-        child: Row(
-          children: [
-            if (icon != null)
-              Icon(
-                icon,
-                color: iconColor ?? AppColors.white,
+              maximumSize: Size(width ?? Get.width, Get.height * 0.06),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  radius ?? Get.width * 0.02,
+                ),
               ),
-            if (iconImage != null) Image.asset(iconImage!),
-            Spacer(),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: titleColor ?? AppColors.white,
-                  ),
-            ),
-            Spacer(),
-          ],
+              side: borderColor == null
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: borderColor!,
+                    )),
+          child: Row(
+            children: [
+              if (icon != null)
+                Icon(
+                  icon,
+                  color: iconColor ?? AppColors.white,
+                ),
+              if (iconImage != null) Image.asset(iconImage!),
+              if (isLeftAligned ?? true) const Spacer(),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: titleColor ?? AppColors.white,
+                    ),
+              ),
+              if (isRightAligned ?? true) const Spacer(),
+            ],
+          ),
         ),
       ),
     );

@@ -150,14 +150,14 @@ class SearchScreen extends StatelessWidget {
                                           overflow: TextOverflow.ellipsis,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodyText2!
+                                              .bodyMedium!
                                               .copyWith(
                                                 color: Colors.grey,
                                               ),
                                         ),
                                         Row(
                                           children: [
-                                            Icon(
+                                            const Icon(
                                               Icons.delivery_dining,
                                               color: AppColors.logoColor,
                                             ),
@@ -171,8 +171,8 @@ class SearchScreen extends StatelessWidget {
                                                   .textTheme
                                                   .bodyMedium,
                                             ),
-                                            Spacer(),
-                                            Icon(
+                                            const Spacer(),
+                                            const Icon(
                                               Icons.timer,
                                               color: AppColors.logoColor,
                                             ),
@@ -186,8 +186,8 @@ class SearchScreen extends StatelessWidget {
                                                   .textTheme
                                                   .bodyMedium,
                                             ),
-                                            Spacer(),
-                                            Icon(
+                                            const Spacer(),
+                                            const Icon(
                                               Icons.star,
                                               color: AppColors.logoColor,
                                             ),
@@ -212,7 +212,7 @@ class SearchScreen extends StatelessWidget {
                                             SizedBox(
                                               width: Get.width * 0.01,
                                             ),
-                                            Text("Free Delivery"),
+                                            const Text("Free Delivery"),
                                           ],
                                         )
                                       ],
