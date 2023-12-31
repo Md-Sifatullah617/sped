@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
-import 'package:sped/utils/custom_widgets/custom_text_field.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
 import 'package:sped/utils/routes/app_routes.dart';
@@ -67,7 +65,7 @@ class CheckEmailPage extends StatelessWidget {
                   Get.toNamed(AppRoutes.profileDetails);
                 }),
             const Spacer(),
-            PrimaryBtn(title: "Send magic link", onPressed: () {})
+            PrimaryBtn(title: "Open email app", onPressed: () {})
           ],
         ),
       ),

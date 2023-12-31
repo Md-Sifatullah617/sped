@@ -39,38 +39,45 @@ class CustomTextField extends StatelessWidget {
         SizedBox(
           height: Get.height * 0.01,
         ),
-        TextFormField(
-          controller: txtController,
-          obscureText: obscureText ?? false,
-          decoration: InputDecoration(
-            prefixIcon: isCountryPicker ?? false
-                ? CountryCodePicker(
-                    onChanged: (CountryCode countryCode) {
-                      print("New Country selected: $countryCode");
-                    },
-                    initialSelection: 'BD',
-                    showCountryOnly: false,
-                    showOnlyCountryWhenClosed: false,
-                    alignLeft: false,
-                  )
-                : prefixIcon == null
-                    ? null
-                    : Icon(
-                        prefixIcon,
-                      ),
-            suffixIcon: suffixWidget,
-            hintText: hintText,
-            hintStyle: Theme.of(context).textTheme.bodyLarge,
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: AppColors.greyColor,
+        Container(
+          height: Get.height * 0.06,
+          alignment: Alignment.center,
+          child: TextFormField(
+            controller: txtController,
+            obscureText: obscureText ?? false,
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                  vertical: Get.width * 0.02, horizontal: Get.width * 0.05),
+              prefixIcon: isCountryPicker ?? false
+                  ? CountryCodePicker(
+                      onChanged: (CountryCode countryCode) {
+                        print("New Country selected: $countryCode");
+                      },
+                      initialSelection: 'BD',
+                      showCountryOnly: true,
+                      showOnlyCountryWhenClosed: true,
+                      alignLeft: false,
+                    )
+                  : prefixIcon == null
+                      ? null
+                      : Icon(
+                          prefixIcon,
+                        ),
+              suffixIcon: suffixWidget,
+              labelText: hintText,
+              enabled: isCountryPicker ?? false ? false : true,
+              labelStyle: Theme.of(context).textTheme.bodyLarge,
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: AppColors.greyColor,
+                ),
+                borderRadius: BorderRadius.circular(10),
               ),
-              borderRadius: BorderRadius.circular(10),
+              // fillColor: AppColors.fedBlue,
+              // filled: true,
             ),
-            // fillColor: AppColors.fedBlue,
-            // filled: true,
+            validator: validator,
           ),
-          validator: validator,
         ),
       ],
     );
