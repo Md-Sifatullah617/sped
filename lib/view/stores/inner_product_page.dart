@@ -99,7 +99,7 @@ class InnerProductPage extends StatelessWidget {
             height: Get.width * 0.07,
             width: Get.width * 0.07,
           ),
-          title: Text("Excellent 9.2"),
+          title: const Text("Excellent 9.2"),
         ),
         ListTile(
           visualDensity: VisualDensity.compact,
@@ -108,7 +108,7 @@ class InnerProductPage extends StatelessWidget {
             height: Get.width * 0.07,
             width: Get.width * 0.07,
           ),
-          title: Text("Open . Closes at 20:30"),
+          title: const Text("Open . Closes at 20:30"),
           trailing: PrimaryBtn(
             onPressed: () {},
             title: "More Info",
@@ -125,8 +125,8 @@ class InnerProductPage extends StatelessWidget {
             height: Get.width * 0.07,
             width: Get.width * 0.07,
           ),
-          title: Text("Delivery in 20 - 30 min"),
-          subtitle: Text("Norrtullsgatan"),
+          title: const Text("Delivery in 20 - 30 min"),
+          subtitle: const Text("Norrtullsgatan"),
           trailing: PrimaryBtn(
             onPressed: () {},
             title: "Change",
@@ -143,7 +143,7 @@ class InnerProductPage extends StatelessWidget {
             height: Get.width * 0.07,
             width: Get.width * 0.07,
           ),
-          title: Text("Order together"),
+          title: const Text("Order together"),
           trailing: PrimaryBtn(
             onPressed: () {},
             title: "Start Now",
@@ -164,7 +164,7 @@ class InnerProductPage extends StatelessWidget {
               height: Get.width * 0.07,
               width: Get.width * 0.07,
             ),
-            title: Text("See allergen information"),
+            title: const Text("See allergen information"),
             trailing: Icon(
               Icons.arrow_forward_ios,
               size: Get.width * 0.05,
