@@ -35,12 +35,12 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Md. Sifatullah",
+                  "MD. X",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-                Text("sifatullahsanowar1@gmail.com"),
+                const Text("s@gmail.com"),
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
