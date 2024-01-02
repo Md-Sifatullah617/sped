@@ -17,19 +17,14 @@ class ProfileDetailsPage extends StatelessWidget {
           vertical: Get.width * 0.06,
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            height: Get.height * 0.03,
+          ),
           InkWell(
             onTap: () {
               Get.back();
             },
-            child: Container(
-              height: Get.height * 0.05,
-              width: Get.width * 0.1,
-              decoration: const BoxDecoration(
-                color: AppColors.greyColor,
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.arrow_back),
-            ),
+            child: const Icon(Icons.arrow_back),
           ),
           SizedBox(
             height: Get.height * 0.02,
@@ -64,36 +59,69 @@ class ProfileDetailsPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: Get.height * 0.02,
+            height: Get.height * 0.01,
           ),
           CustomTextField(
             hintText: "Email",
-            suffixWidget: Icon(
-              Icons.arrow_forward_ios,
-              size: Get.width * 0.04,
-            ),
           ),
           SizedBox(
-            height: Get.height * 0.02,
+            height: Get.height * 0.01,
           ),
           CustomTextField(
-              hintText: "First name",
-              suffixWidget: Icon(
-                Icons.arrow_forward_ios,
-                size: Get.width * 0.04,
-              )),
+            hintText: "First name",
+          ),
           SizedBox(
-            height: Get.height * 0.02,
+            height: Get.height * 0.01,
           ),
           CustomTextField(
             hintText: "Last name",
-            suffixWidget: Icon(
-              Icons.arrow_forward_ios,
-              size: Get.width * 0.04,
-            ),
           ),
           SizedBox(
             height: Get.height * 0.02,
+          ),
+          CheckboxListTile(
+            value: true,
+            onChanged: (value) {},
+            controlAffinity: ListTileControlAffinity.leading,
+            contentPadding: EdgeInsets.zero,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "I’ve read and agree with the User Terms of Service. I understand that my personal data will be processed in accordance with Sped Privacy Statement.",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "Read More",
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: AppColors.logoColor,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CheckboxListTile(
+            value: false,
+            onChanged: (value) {},
+            controlAffinity: ListTileControlAffinity.leading,
+            contentPadding: EdgeInsets.zero,
+            title: Text(
+              "I want to received special offers and promotions from Sped via push notification.",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
+          CheckboxListTile(
+            value: false,
+            onChanged: (value) {},
+            controlAffinity: ListTileControlAffinity.leading,
+            contentPadding: EdgeInsets.zero,
+            title: Text(
+              "I want to received special offers and promotions from Sped via email.",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
           const Spacer(),
           PrimaryBtn(title: "Next", onPressed: () {}),

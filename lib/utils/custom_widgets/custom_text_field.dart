@@ -40,8 +40,13 @@ class CustomTextField extends StatelessWidget {
           height: Get.height * 0.01,
         ),
         Container(
-          height: Get.height * 0.06,
+          height: Get.height * 0.08,
+          width: Get.width,
           alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: AppColors.greyColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: TextFormField(
             controller: txtController,
             obscureText: obscureText ?? false,
@@ -67,12 +72,7 @@ class CustomTextField extends StatelessWidget {
               labelText: hintText,
               enabled: isCountryPicker ?? false ? false : true,
               labelStyle: Theme.of(context).textTheme.bodyLarge,
-              border: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: AppColors.greyColor,
-                ),
-                borderRadius: BorderRadius.circular(10),
-              ),
+              border: InputBorder.none,
               // fillColor: AppColors.fedBlue,
               // filled: true,
             ),
