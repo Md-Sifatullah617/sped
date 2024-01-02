@@ -5,8 +5,8 @@ import 'package:sped/utils/custom_widgets/custom_sheet.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
