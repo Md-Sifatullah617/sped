@@ -1,6 +1,8 @@
 //images
 String logo = "assets/images/logo.png";
 String splashPhoto = "assets/images/welcome.png";
+String onBoard2 = "assets/images/Plant.png";
+String onBoard3 = "assets/images/Table.png";
 String banner1 = "assets/images/Banner.png";
 String food1 = "assets/images/food1.jpeg";
 String food2 = "assets/images/food2.jpeg";
