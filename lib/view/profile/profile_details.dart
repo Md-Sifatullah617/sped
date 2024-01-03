@@ -80,86 +80,89 @@ class ProfileDetailsPage extends StatelessWidget {
                                   height: Get.height * 0.01,
                                 ),
                                 controller.isWelcomePage.value
-                                    ? Expanded(
+                                    ? SizedBox(
+                                        width: Get.width,
+                                        height: Get.height * 0.715,
                                         child: Column(
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              showCountryPicker(
-                                                context: context,
-                                                useSafeArea: true,
-                                                onSelect: (Country country) {
-                                                  controller.countryController
-                                                          .text =
-                                                      "${country.flagEmoji} ${country.displayName}";
-                                                  controller
-                                                          .storeFlagCode.text =
-                                                      "${country.flagEmoji} ${country.phoneCode}";
-                                                  controller.update();
-                                                  print(
-                                                      'Select country: ${country.displayName}');
-                                                },
-                                              );
-                                            },
-                                            child: AbsorbPointer(
-                                              child: CustomTextField(
-                                                txtController: controller
-                                                    .countryController,
-                                                hintText: "Country",
-                                                suffixWidget: Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  size: Get.width * 0.04,
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                showCountryPicker(
+                                                  context: context,
+                                                  useSafeArea: true,
+                                                  onSelect: (Country country) {
+                                                    controller.countryController
+                                                            .text =
+                                                        "${country.flagEmoji} ${country.displayName}";
+                                                    controller.storeFlagCode
+                                                            .text =
+                                                        "${country.flagEmoji} ${country.phoneCode}";
+                                                    controller.update();
+                                                    print(
+                                                        'Select country: ${country.displayName}');
+                                                  },
+                                                );
+                                              },
+                                              child: AbsorbPointer(
+                                                child: CustomTextField(
+                                                  txtController: controller
+                                                      .countryController,
+                                                  hintText: "Country",
+                                                  suffixWidget: Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    size: Get.width * 0.04,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: Get.height * 0.02,
-                                          ),
-                                          CheckboxListTile(
-                                            value: true,
-                                            onChanged: (value) {},
-                                            controlAffinity:
-                                                ListTileControlAffinity.leading,
-                                            contentPadding: EdgeInsets.zero,
-                                            title: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "I’ve read and agree with the User Terms of Service. I understand that my personal data will be processed in accordance with Sped Privacy Statement.",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {},
-                                                  child: Text(
-                                                    "Read More",
+                                            SizedBox(
+                                              height: Get.height * 0.02,
+                                            ),
+                                            CheckboxListTile(
+                                              value: true,
+                                              onChanged: (value) {},
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .leading,
+                                              contentPadding: EdgeInsets.zero,
+                                              title: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "I’ve read and agree with the User Terms of Service. I understand that my personal data will be processed in accordance with Sped Privacy Statement.",
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .bodyMedium!
-                                                        .copyWith(
-                                                          color: AppColors
-                                                              .logoColor,
-                                                        ),
+                                                        .bodyMedium,
                                                   ),
-                                                ),
-                                              ],
+                                                  InkWell(
+                                                    onTap: () {},
+                                                    child: Text(
+                                                      "Read More",
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium!
+                                                          .copyWith(
+                                                            color: AppColors
+                                                                .logoColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Spacer(),
-                                          PrimaryBtn(
-                                            title: "Continue",
-                                            onPressed: () {
-                                              Get.toNamed(AppRoutes.homePage);
-                                              // controller.isWelcomePage.value =
-                                              //     false;
-                                              // controller.update();
-                                            },
-                                          ),
-                                        ],
-                                      ))
+                                            const Spacer(),
+                                            PrimaryBtn(
+                                              title: "Continue",
+                                              onPressed: () {
+                                                Get.toNamed(AppRoutes.homePage);
+                                                // controller.isWelcomePage.value =
+                                                //     false;
+                                                // controller.update();
+                                              },
+                                            ),
+                                          ],
+                                        ))
                                     : Expanded(
                                         child: Column(
                                           children: [
@@ -186,19 +189,19 @@ class ProfileDetailsPage extends StatelessWidget {
                                                     AppColors.greyColor2,
                                               ),
                                               cursorColor: Colors.black,
-                                              animationDuration:
-                                                  Duration(milliseconds: 300),
-                                              textStyle: TextStyle(
+                                              animationDuration: const Duration(
+                                                  milliseconds: 300),
+                                              textStyle: const TextStyle(
                                                   fontSize: 20, height: 1.6),
                                               // backgroundColor: Colors.blue.shade50,
                                               // enableActiveFill: true,
                                               // errorAnimationController: errorController,
-                                              controller:
-                                                  controller.pinCodeController,
+                                              // controller:
+                                              //     controller.pinCodeController,
                                               keyboardType:
                                                   TextInputType.number,
                                               boxShadows: [
-                                                BoxShadow(
+                                                const BoxShadow(
                                                   offset: Offset(0, 1),
                                                   color: Colors.black12,
                                                   blurRadius: 10,
@@ -226,7 +229,7 @@ class ProfileDetailsPage extends StatelessWidget {
                                             ),
                                             Row(
                                               children: [
-                                                Text("Don’t get code?"),
+                                                const Text("Don’t get code?"),
                                                 SizedBox(
                                                   width: Get.width * 0.02,
                                                 ),
@@ -245,7 +248,7 @@ class ProfileDetailsPage extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             PrimaryBtn(
                                               title: "Next",
                                               onPressed: () {
@@ -296,13 +299,13 @@ class ProfileDetailsPage extends StatelessWidget {
                                     SizedBox(
                                       width: Get.width * 0.02,
                                     ),
-                                    Expanded(
+                                    const Expanded(
                                         flex: 3,
                                         child: CustomTextField(
                                             hintText: "Phone number")),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 PrimaryBtn(
                                   title: "Send text with code",
                                   onPressed: () {
