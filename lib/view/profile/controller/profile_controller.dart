@@ -1,7 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/photos.dart';
 
 class ProfileController extends GetxController {
+  TextEditingController countryController = TextEditingController();
+  TextEditingController storeFlagCode = TextEditingController();
+  TextEditingController pinCodeController = TextEditingController();
+  var isTypingNum = false.obs;
+  var verificationPage = false.obs;
+  var isWelcomePage = false.obs;
   var name = "Md. Sifatullah".obs;
   var email = "sifatullahsanowar1@gmail.com".obs;
 

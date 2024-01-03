@@ -5,7 +5,7 @@ import 'package:sped/view/splash/splash.dart';
 import 'package:sped/view/stores/check_email.dart';
 import 'package:sped/view/stores/inner_product_page.dart';
 import 'package:sped/view/stores/login_screen.dart';
-import 'package:sped/view/stores/profile_details.dart';
+import 'package:sped/view/profile/profile_details.dart';
 
 class AppRoutes {
   static const String initialRoute = "/";

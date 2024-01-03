@@ -88,7 +88,6 @@ class Onboard2 extends StatelessWidget {
           hintText: "Email",
           suffixWidget: Icon(
             FontAwesomeIcons.solidCircleXmark,
-            color: AppColors.greyColor,
           ),
         ),
         const Spacer(),
