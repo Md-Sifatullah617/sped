@@ -3,6 +3,7 @@ String logo = "assets/images/logo.png";
 String splashPhoto = "assets/images/welcome.png";
 String onBoard2 = "assets/images/Plant.png";
 String onBoard3 = "assets/images/Table.png";
+String banner0 = "assets/images/banner0.jpeg";
 String banner1 = "assets/images/Banner.png";
 String food1 = "assets/images/food1.jpeg";
 String food2 = "assets/images/food2.jpeg";
@@ -16,6 +17,7 @@ String rFood3 = "assets/images/food14.png";
 String rFood4 = "assets/images/food15.png";
 
 //icons
+String homeIcon = "assets/icons/home.png";
 String googleIcons = "assets/icons/Group 6.png";
 String filterIcon = "assets/icons/Icon (1).png";
 String dropDownArrow = "assets/icons/Icon (2).png";

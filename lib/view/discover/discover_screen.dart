@@ -17,7 +17,7 @@ class DiscoverScreen extends StatelessWidget {
           elevation: 0,
           leading: IconButton(
             icon: Image.asset(
-              locationIndicator,
+              homeIcon,
             ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(AppColors.btnColor2),
