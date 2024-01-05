@@ -4,9 +4,9 @@ import 'package:sped/utils/photos.dart';
 class DiscoverController extends GetxController {
   List banner = [
     {
-      "image": banner1,
-      "title": "Get your 30% daily\ndiscount now!",
-      "subtitle": "Use code: FIRST50"
+      "image": banner0,
+      "title": "",
+      "subtitle": "",
     },
     {
       "image": banner1,
@@ -14,9 +14,9 @@ class DiscoverController extends GetxController {
       "subtitle": "Use code: FIRST50"
     },
     {
-      "image": banner1,
-      "title": "Get your 30% daily\ndiscount now!",
-      "subtitle": "Use code: FIRST50"
+      "image": banner0,
+      "title": "",
+      "subtitle": "",
     },
   ];
   var currentIndex = 0.obs;

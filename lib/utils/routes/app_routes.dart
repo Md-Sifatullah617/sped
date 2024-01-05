@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sped/view/home/home_screen.dart';
 import 'package:sped/view/profile/add_address.dart';
+import 'package:sped/view/profile/select_cities.dart';
 import 'package:sped/view/profile/themes_page.dart';
 import 'package:sped/view/splash/onboardin.dart';
 import 'package:sped/view/splash/splash.dart';
@@ -19,6 +20,7 @@ class AppRoutes {
   static const String profileDetails = "/profileDetailsPage";
   static const String addAddress = "/addnewAddressPage";
   static const String addTheme = "/addThemePage";
+  static const String selectCitiesOnMap = "/selectCitiesonMapPage";
 
   static List<GetPage> pages = [
     GetPage(
@@ -59,6 +61,10 @@ class AppRoutes {
     GetPage(
       name: addTheme,
       page: () => const ThemesPage(),
+    ),
+    GetPage(
+      name: selectCitiesOnMap,
+      page: () => const SelectCitiesOnMapPage(),
     ),
   ];
 }

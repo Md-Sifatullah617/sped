@@ -11,7 +11,7 @@ class ProfileController extends GetxController {
   var isWelcomePage = false.obs;
   var isLocationTypeSelected = "".obs;
   var keyIndex = 0.obs;
-  var isExpanded = false.obs;
+  var isExpanded = true.obs;
 
   void selectLocationType(String type) {
     isLocationTypeSelected.value = type;

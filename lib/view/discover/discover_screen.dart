@@ -186,23 +186,25 @@ class DiscoverScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    item["title"],
-                                    style: TextStyle(
-                                      color: AppColors.white,
-                                      fontSize: Get.width * 0.05,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
+                                  item["title"] == ""
+                                      ? SizedBox()
+                                      : Text(
+                                          item["title"],
+                                          style: TextStyle(
+                                            color: AppColors.white,
+                                            fontSize: Get.width * 0.05,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                   SizedBox(
                                     height: Get.height * 0.01,
                                   ),
-                                  PrimaryBtn(
-                                      title: "Order Now",
-                                      btnColor: AppColors.black,
-                                      width: Get.width * 0.4,
-                                      radius: Get.width * 0.05,
-                                      onPressed: () {}),
+                                  // PrimaryBtn(
+                                  //     title: "Order Now",
+                                  //     btnColor: AppColors.black,
+                                  //     width: Get.width * 0.4,
+                                  //     radius: Get.width * 0.05,
+                                  //     onPressed: () {}),
                                 ],
                               ),
                             );
