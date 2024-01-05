@@ -43,3 +43,6 @@ String riderIcon = "assets/icons/rider.png";
 String togetherIcon = "assets/icons/tgt.png";
 String shareIcon = "assets/icons/share.png";
 String checkEmailIcon = "assets/icons/onboard.png";
+String other = "assets/icons/other.png";
+String office = "assets/icons/office.png";
+String appartment = "assets/icons/apartment.png";

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
+import 'package:sped/utils/routes/app_routes.dart';
 import 'package:sped/view/discover/controller/discrover_controller.dart';
 
 class DiscoverScreen extends StatelessWidget {
@@ -24,31 +25,118 @@ class DiscoverScreen extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          title: Row(
-            children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "Home",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
+          title: InkWell(
+            onTap: () {
+              Get.bottomSheet(
+                Container(
+                  height: Get.height * 0.35,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Get.width * 0.05,
+                    vertical: Get.height * 0.02,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            height: Get.height * 0.04,
+                            width: Get.height * 0.04,
+                            decoration: const BoxDecoration(
+                              color: AppColors.greyColor,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.close),
                           ),
-                    ),
-                    TextSpan(
-                      text: ", Jl. Soekarno Hatta 15A",
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                  ],
+                        ),
+                      ),
+                      Text(
+                        "Location",
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.location_on,
+                        ),
+                        title: Text(
+                          "Share my current location",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        subtitle: Text(
+                          "Sped will use your location",
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        visualDensity: VisualDensity.compact,
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.addAddress);
+                        },
+                        leading: Icon(
+                          Icons.add,
+                        ),
+                        title: Text(
+                          "Add new address manually",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        visualDensity: VisualDensity.compact,
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.list,
+                        ),
+                        title: Text(
+                          "Browse all Sped cities",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        visualDensity: VisualDensity.compact,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: Get.width * 0.02,
-              ),
-              Image.asset(
-                dropDownArrow,
-              )
-            ],
+                backgroundColor: Colors.white,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Get.width * 0.05),
+                ),
+              );
+            },
+            child: Row(
+              children: [
+                // RichText(
+                //   text: TextSpan(
+                //     children: [
+                //       TextSpan(
+                //         text: "Home",
+                //         style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                //               fontWeight: FontWeight.bold,
+                //             ),
+                //       ),
+                //       TextSpan(
+                //         text: ", Jl. Soekarno Hatta 15A",
+                //         style: Theme.of(context).textTheme.titleSmall,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                Text(
+                  "Soekarno Hatta 15A",
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                SizedBox(
+                  width: Get.width * 0.02,
+                ),
+                Image.asset(
+                  dropDownArrow,
+                )
+              ],
+            ),
           ),
         ),
         body: GetBuilder<DiscoverController>(
