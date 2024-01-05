@@ -10,6 +10,7 @@ class AppColors {
   static const Color greyColor = Color(0xFFE0E0E0);
   static const Color fedBlue = Color(0xFF0B72B9);
   static const Color btnColor2 = Color(0xFFFED8CC);
+  static const Color btnColor3 = Color(0xFFFFF3EB);
   static const Color onboardBgc = Color(0xFFFAF4F0);
   static const Color greyColor2 = Color(0xFFF2EFED);
 }

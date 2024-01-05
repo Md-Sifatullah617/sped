@@ -40,60 +40,59 @@ class AddNewAddressPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            if (controller.isTypingNum.value)
-              Expanded(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: Get.height * 0.01,
-                    ),
-                    const Text(
-                        "Please choose the country where you’ll primarily use sped"),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        showCountryPicker(
-                          context: context,
-                          useSafeArea: true,
-                          onSelect: (Country country) {
-                            controller.countryController.text =
-                                "${country.flagEmoji} ${country.displayName}";
-                            controller.storeFlagCode.text =
-                                "${country.flagEmoji} ${country.phoneCode}";
-                            controller.update();
-                            print('Select country: ${country.displayName}');
-                          },
-                        );
-                      },
-                      child: AbsorbPointer(
-                        child: CustomTextField(
-                          txtController: controller.countryController,
-                          hintText: "Country",
-                          suffixWidget: Icon(
-                            Icons.arrow_forward_ios,
-                            size: Get.width * 0.04,
-                          ),
+            Expanded(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: Get.height * 0.01,
+                  ),
+                  const Text(
+                      "Please choose the country where you’ll primarily use sped"),
+                  SizedBox(
+                    height: Get.height * 0.02,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      showCountryPicker(
+                        context: context,
+                        useSafeArea: true,
+                        onSelect: (Country country) {
+                          controller.countryController.text =
+                              "${country.flagEmoji} ${country.displayName}";
+                          controller.storeFlagCode.text =
+                              "${country.flagEmoji} ${country.phoneCode}";
+                          controller.update();
+                          print('Select country: ${country.displayName}');
+                        },
+                      );
+                    },
+                    child: AbsorbPointer(
+                      child: CustomTextField(
+                        txtController: controller.countryController,
+                        hintText: "Country",
+                        suffixWidget: Icon(
+                          Icons.arrow_forward_ios,
+                          size: Get.width * 0.04,
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: Get.height * 0.01,
-                    ),
-                    const CustomTextField(
-                      hintText: "Last name",
-                    ),
-                    const Spacer(),
-                    PrimaryBtn(
-                      title: "Next",
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.addTheme);
-                      },
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.01,
+                  ),
+                  const CustomTextField(
+                    hintText: "Street name and number",
+                  ),
+                  const Spacer(),
+                  PrimaryBtn(
+                    title: "Next",
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.addTheme);
+                    },
+                  ),
+                ],
               ),
+            ),
           ]),
         ),
       ),

@@ -9,6 +9,17 @@ class ProfileController extends GetxController {
   var isTypingNum = false.obs;
   var verificationPage = false.obs;
   var isWelcomePage = false.obs;
+  var isLocationTypeSelected = "".obs;
+  var keyIndex = 0.obs;
+  var isExpanded = false.obs;
+
+  void selectLocationType(String type) {
+    isLocationTypeSelected.value = type;
+    keyIndex.value++;
+    isExpanded.value = false;
+    print(keyIndex.value);
+  }
+
   var name = "Md. Sifatullah".obs;
   var email = "sifatullahsanowar1@gmail.com".obs;
 

@@ -30,12 +30,7 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null)
-          Text(
-            title!,
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: AppColors.greyColor,
-                ),
-          ),
+          Text(title!, style: Theme.of(context).textTheme.bodyLarge),
         SizedBox(
           height: Get.height * 0.01,
         ),
