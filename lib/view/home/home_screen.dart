@@ -16,9 +16,7 @@ class HomeScreen extends StatelessWidget {
             Obx(() => controller.screens[controller.currentIndex.value]),
             // bottom app bar
             Positioned(
-              bottom: Get.height * 0.02,
-              right: Get.width * 0.05,
-              left: Get.width * 0.05,
+              bottom: Get.height * 0.0,
               child: Container(
                 height: Get.height * 0.08,
                 width: Get.width,
@@ -27,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.white,
-                  borderRadius: BorderRadius.circular(Get.width * 0.05),
+                  // borderRadius: BorderRadius.circular(Get.width * 0.05),
                   boxShadow: [
                     BoxShadow(
                       color: AppColors.black.withOpacity(0.1),

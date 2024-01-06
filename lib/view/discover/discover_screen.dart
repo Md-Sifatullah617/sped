@@ -61,7 +61,7 @@ class DiscoverScreen extends StatelessWidget {
                             ),
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.location_on,
                         ),
                         title: Text(
@@ -78,7 +78,7 @@ class DiscoverScreen extends StatelessWidget {
                         onTap: () {
                           Get.toNamed(AppRoutes.addAddress);
                         },
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.add,
                         ),
                         title: Text(
@@ -88,7 +88,7 @@ class DiscoverScreen extends StatelessWidget {
                         visualDensity: VisualDensity.compact,
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.list,
                         ),
                         title: Text(
@@ -187,7 +187,7 @@ class DiscoverScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   item["title"] == ""
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : Text(
                                           item["title"],
                                           style: TextStyle(
@@ -262,6 +262,7 @@ class DiscoverScreen extends StatelessWidget {
                               title: "See All",
                               titleColor: AppColors.logoColor,
                               width: Get.width * 0.22,
+                              height: Get.height * 0.04,
                               btnColor: AppColors.btnColor2,
                               onPressed: () {}),
                         ],
@@ -352,7 +353,7 @@ class DiscoverScreen extends StatelessWidget {
                                             ),
                                             Row(
                                               children: [
-                                                Icon(
+                                                const Icon(
                                                   Icons.delivery_dining,
                                                   color: AppColors.logoColor,
                                                 ),
@@ -364,8 +365,8 @@ class DiscoverScreen extends StatelessWidget {
                                                       .textTheme
                                                       .bodyMedium,
                                                 ),
-                                                Spacer(),
-                                                Icon(
+                                                const Spacer(),
+                                                const Icon(
                                                   Icons.timer,
                                                   color: AppColors.logoColor,
                                                 ),
@@ -377,8 +378,8 @@ class DiscoverScreen extends StatelessWidget {
                                                       .textTheme
                                                       .bodyMedium,
                                                 ),
-                                                Spacer(),
-                                                Icon(
+                                                const Spacer(),
+                                                const Icon(
                                                   Icons.star,
                                                   color: AppColors.logoColor,
                                                 ),
@@ -404,6 +405,77 @@ class DiscoverScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: Get.height * 0.2,
+                  width: Get.width,
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        height: Get.height * 0.21,
+                        width: Get.width,
+                      ),
+                      Positioned(
+                        left: Get.width * 0.02,
+                        bottom: Get.height * 0.008,
+                        right: Get.width * 0.02,
+                        child: Container(
+                          height: Get.height * 0.15,
+                          width: Get.width,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: Get.width * 0.05,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.logoColor,
+                            borderRadius:
+                                BorderRadius.circular(Get.width * 0.05),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: Get.width * 0.05),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  logo,
+                                  color: AppColors.white,
+                                  height: Get.height * 0.04,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.01,
+                                ),
+                                Text(
+                                  "Skip the delivery fees with sped",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                        color: AppColors.white,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: Get.width * 0.07,
+                        bottom: Get.height * 0.007,
+                        child: Transform.flip(
+                          flipX: true,
+                          child: Image.asset(
+                            deliveryBikeMan,
+                            height: Get.height * 0.2,
+                            width: Get.width * 0.4,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
                 Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: Get.width * 0.05,
@@ -414,7 +486,7 @@ class DiscoverScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Popular Items",
+                            "Restaurant categories",
                             style: TextStyle(
                               color: AppColors.black,
                               fontSize: Get.width * 0.05,
@@ -424,6 +496,7 @@ class DiscoverScreen extends StatelessWidget {
                           PrimaryBtn(
                               title: "See All",
                               titleColor: AppColors.logoColor,
+                              height: Get.height * 0.04,
                               width: Get.width * 0.22,
                               btnColor: AppColors.btnColor2,
                               onPressed: () {}),

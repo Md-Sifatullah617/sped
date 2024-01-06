@@ -16,6 +16,7 @@ String rFood2 = "assets/images/food13.png";
 String rFood3 = "assets/images/food14.png";
 String rFood4 = "assets/images/food15.png";
 String staticMap = "assets/images/map.png";
+String deliveryBikeMan = "assets/images/deliverybikeman.png";
 
 //icons
 String homeIcon = "assets/icons/home.png";
