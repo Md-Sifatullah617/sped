@@ -360,9 +360,6 @@ class RestaurantsScreen extends StatelessWidget {
                             ],
                           )),
                     ),
-                    SizedBox(
-                      height: Get.height * 0.08,
-                    ),
                   ]),
             );
           },

@@ -12,220 +12,244 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         //appbar with search bar and filter icon
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Container(
-            height: Get.height * 0.06,
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width * 0.02,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(Get.width * 0.3),
-            ),
-            child: TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                prefixIcon: const Icon(Icons.search),
-                hintText: "Search",
-                hintStyle: const TextStyle(
-                  color: Colors.grey,
-                ),
-                suffixIcon: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(FontAwesomeIcons.solidCircleXmark),
-                    SizedBox(
-                      width: Get.width * 0.02,
-                    ),
-                    const Text("|"),
-                    SizedBox(
-                      width: Get.width * 0.02,
-                    ),
-                    Image.asset(
-                      filterIcon,
-                      height: Get.height * 0.03,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
         body: GetBuilder<SearchesController>(
-          init: SearchesController(),
-          builder: (controller) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Get.width * 0.05,
+      init: SearchesController(),
+      builder: (controller) {
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width * 0.05,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height * 0.02,
               ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: RichText(
-                          overflow: TextOverflow.ellipsis,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Searching near ",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: "Grand hotel, Sodra Blasieholmshamnen",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                      color: AppColors.logoColor,
-                                    ),
-                              ),
-                            ],
-                          ),
+              Container(
+                height: Get.height * 0.06,
+                padding: EdgeInsets.symmetric(
+                  horizontal: Get.width * 0.02,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(Get.width * 0.3),
+                ),
+                child: TextField(
+                  controller: controller.searchController,
+                  focusNode: controller.searchFocusNode,
+                  onTap: () {
+                    controller.searchFocusNode.requestFocus();
+                  },
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: "Search",
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                    suffixIcon: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(FontAwesomeIcons.solidCircleXmark),
+                        SizedBox(
+                          width: Get.width * 0.02,
                         ),
+                        const Text("|"),
+                        SizedBox(
+                          width: Get.width * 0.02,
+                        ),
+                        Image.asset(
+                          filterIcon,
+                          height: Get.height * 0.03,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: RichText(
+                      overflow: TextOverflow.ellipsis,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Searching near ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          TextSpan(
+                            text: "Grand hotel, Sodra Blasieholmshamnen",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  color: AppColors.logoColor,
+                                ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        width: Get.width * 0.02,
-                      ),
-                      Image.asset(
-                        dropDownArrow,
-                      )
-                    ],
+                    ),
                   ),
                   SizedBox(
-                    height: Get.height * 0.02,
+                    width: Get.width * 0.02,
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: controller.searchList.length,
-                        itemBuilder: (context, index) => Container(
-                              margin: EdgeInsets.only(
-                                bottom: Get.height * 0.02,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: Get.height * 0.12,
-                                    width: Get.height * 0.12,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                        Get.width * 0.02,
-                                      ),
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                          controller.searchList[index]["image"],
-                                        ),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: Get.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          controller.searchList[index]["title"],
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium!
-                                              .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                        Text(
-                                          controller.searchList[index]
-                                              ["description"],
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                color: Colors.grey,
-                                              ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Icon(
-                                              Icons.delivery_dining,
-                                              color: AppColors.logoColor,
-                                            ),
-                                            SizedBox(
-                                              width: Get.width * 0.01,
-                                            ),
-                                            Text(
-                                              controller.searchList[index]
-                                                  ["cost"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                            const Spacer(),
-                                            const Icon(
-                                              Icons.timer,
-                                              color: AppColors.logoColor,
-                                            ),
-                                            SizedBox(
-                                              width: Get.width * 0.01,
-                                            ),
-                                            Text(
-                                              controller.searchList[index]
-                                                  ["time"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                            const Spacer(),
-                                            const Icon(
-                                              Icons.star,
-                                              color: AppColors.logoColor,
-                                            ),
-                                            SizedBox(
-                                              width: Get.width * 0.01,
-                                            ),
-                                            Text(
-                                              controller.searchList[index]
-                                                  ["rating"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Image.asset(
-                                              discountIcon,
-                                              color: AppColors.logoColor,
-                                            ),
-                                            SizedBox(
-                                              width: Get.width * 0.01,
-                                            ),
-                                            const Text("Free Delivery"),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )),
+                  Image.asset(
+                    dropDownArrow,
                   )
                 ],
               ),
-            );
-          },
-        ));
+              Obx(() => AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 500),
+                    child: controller.isFocused.value
+                        ? Wrap(
+                            alignment: WrapAlignment.center,
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: controller.resentSearches.map((e) {
+                              return Chip(
+                                side: const BorderSide(
+                                  color: AppColors.logoColor,
+                                ),
+                                label: Text(
+                                  e,
+                                  style: const TextStyle(
+                                      color: AppColors.logoColor),
+                                ),
+                              );
+                            }).toList(),
+                          )
+                        : const SizedBox(),
+                  )),
+              SizedBox(
+                height: Get.height * 0.02,
+              ),
+              Expanded(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.searchList.length,
+                    itemBuilder: (context, index) => Container(
+                          margin: EdgeInsets.only(
+                            bottom: Get.height * 0.02,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: Get.height * 0.12,
+                                width: Get.height * 0.12,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    Get.width * 0.02,
+                                  ),
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      controller.searchList[index]["image"],
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: Get.width * 0.02,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      controller.searchList[index]["title"],
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium!
+                                          .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    Text(
+                                      controller.searchList[index]
+                                          ["description"],
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            color: Colors.grey,
+                                          ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.delivery_dining,
+                                          color: AppColors.logoColor,
+                                        ),
+                                        SizedBox(
+                                          width: Get.width * 0.01,
+                                        ),
+                                        Text(
+                                          controller.searchList[index]["cost"],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                        const Spacer(),
+                                        const Icon(
+                                          Icons.timer,
+                                          color: AppColors.logoColor,
+                                        ),
+                                        SizedBox(
+                                          width: Get.width * 0.01,
+                                        ),
+                                        Text(
+                                          controller.searchList[index]["time"],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                        const Spacer(),
+                                        const Icon(
+                                          Icons.star,
+                                          color: AppColors.logoColor,
+                                        ),
+                                        SizedBox(
+                                          width: Get.width * 0.01,
+                                        ),
+                                        Text(
+                                          controller.searchList[index]
+                                              ["rating"],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          discountIcon,
+                                          color: AppColors.logoColor,
+                                        ),
+                                        SizedBox(
+                                          width: Get.width * 0.01,
+                                        ),
+                                        const Text("Free Delivery"),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+              )
+            ],
+          ),
+        );
+      },
+    ));
   }
 }

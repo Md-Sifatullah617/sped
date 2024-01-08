@@ -1,7 +1,31 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/photos.dart';
 
 class SearchesController extends GetxController {
+  final FocusNode searchFocusNode = FocusNode();
+  final TextEditingController searchController = TextEditingController();
+  var isFocused = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    searchFocusNode.addListener(_focusListener); // Add this line
+  }
+
+  @override
+  void onClose() {
+    searchFocusNode.removeListener(_focusListener); // Add this line
+    searchFocusNode.dispose();
+    super.onClose();
+  }
+
+  void _focusListener() {
+    // Add this method
+    isFocused.value = searchFocusNode.hasFocus;
+    print(searchFocusNode.hasFocus);
+  }
+
   List searchList = [
     {
       "image": food1,
@@ -67,5 +91,21 @@ class SearchesController extends GetxController {
       "time": "25-40 min",
       "rating": "3.5",
     },
+  ];
+
+  List resentSearches = [
+    "Flowers",
+    "Burger",
+    "Pizza",
+    "Pasta",
+    "Sushi",
+    "Burger",
+    "Pizza",
+    "Burger",
+    "Pizza",
+    "Pasta",
+    "Sushi",
+    "Burger",
+    "Pizza",
   ];
 }
