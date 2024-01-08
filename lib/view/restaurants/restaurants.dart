@@ -16,7 +16,7 @@ class RestaurantsScreen extends StatelessWidget {
           elevation: 0,
           leading: IconButton(
             icon: Image.asset(
-              locationIndicator,
+              homeIcon,
             ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(AppColors.btnColor2),
@@ -25,24 +25,11 @@ class RestaurantsScreen extends StatelessWidget {
           ),
           title: Row(
             children: [
-              Expanded(
-                child: RichText(
-                  overflow: TextOverflow.ellipsis,
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Home",
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      TextSpan(
-                        text: ", Jl. Soekarno Hatta 15A",
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    ],
-                  ),
-                ),
+              Text(
+                "Soekarno Hatta 15A",
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: AppColors.logoColor,
+                    ),
               ),
               SizedBox(
                 width: Get.width * 0.02,
@@ -108,6 +95,7 @@ class RestaurantsScreen extends StatelessWidget {
                                   title: "See All",
                                   titleColor: AppColors.logoColor,
                                   width: Get.width * 0.22,
+                                  height: Get.height * 0.04,
                                   btnColor: AppColors.btnColor2,
                                   onPressed: () {}),
                             ],
@@ -183,7 +171,7 @@ class RestaurantsScreen extends StatelessWidget {
                     ...List.generate(
                       controller.allRestaurantList.length,
                       (index) => Container(
-                          height: Get.height * 0.37,
+                          height: Get.height * 0.38,
                           width: Get.width,
                           margin: EdgeInsets.symmetric(
                             horizontal: Get.width * 0.05,
@@ -204,20 +192,42 @@ class RestaurantsScreen extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(Get.width * 0.05),
-                                  topRight: Radius.circular(Get.width * 0.05),
-                                ),
-                                child: Image.asset(
-                                  controller.allRestaurantList[index]["image"],
-                                  height: Get.height * 0.25,
-                                  width: Get.width,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.01,
+                              Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft:
+                                          Radius.circular(Get.width * 0.05),
+                                      topRight:
+                                          Radius.circular(Get.width * 0.05),
+                                    ),
+                                    child: Image.asset(
+                                      controller.allRestaurantList[index]
+                                          ["image"],
+                                      height: Get.height * 0.25,
+                                      width: Get.width,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  //isfav icon top right corner
+                                  Positioned(
+                                    top: Get.height * 0.01,
+                                    right: Get.width * 0.03,
+                                    child: Container(
+                                      height: Get.height * 0.05,
+                                      width: Get.width * 0.1,
+                                      decoration: const BoxDecoration(
+                                        color: AppColors.logoColor,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: AppColors.white,
+                                        size: Get.width * 0.07,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -225,39 +235,89 @@ class RestaurantsScreen extends StatelessWidget {
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(
-                                      controller.allRestaurantList[index]
-                                          ["title"],
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge!
-                                          .copyWith(
-                                            color: AppColors.black,
-                                            fontSize: Get.width * 0.04,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                    ListTile(
+                                      contentPadding: EdgeInsets.zero,
+                                      visualDensity: VisualDensity.compact,
+                                      title: Text(
+                                        controller.allRestaurantList[index]
+                                            ["title"],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge!
+                                            .copyWith(
+                                              color: AppColors.black,
+                                              fontSize: Get.width * 0.04,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                      subtitle: Text(
+                                        controller.allRestaurantList[index]
+                                            ["description"],
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              fontSize: Get.width * 0.03,
+                                            ),
+                                      ),
+                                      //delivery time
+                                      trailing: Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: Get.width * 0.02,
+                                          // vertical: Get.height * 0.01,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.btnColor3,
+                                          borderRadius: BorderRadius.circular(
+                                              Get.width * 0.02),
+                                        ),
+                                        child: Text(
+                                            textAlign: TextAlign.center,
+                                            "20-30\nmin",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                  color: AppColors.logoColor,
+                                                )),
+                                      ),
                                     ),
-                                    SizedBox(
-                                      height: Get.height * 0.01,
-                                    ),
-                                    Text(
-                                      controller.allRestaurantList[index]
-                                          ["description"],
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .copyWith(
-                                            fontSize: Get.width * 0.03,
-                                          ),
-                                    ),
-                                    SizedBox(
-                                      height: Get.height * 0.01,
-                                    ),
+                                    // Text(
+                                    //   controller.allRestaurantList[index]
+                                    //       ["title"],
+                                    //   style: Theme.of(context)
+                                    //       .textTheme
+                                    //       .titleLarge!
+                                    //       .copyWith(
+                                    //         color: AppColors.black,
+                                    //         fontSize: Get.width * 0.04,
+                                    //         fontWeight: FontWeight.bold,
+                                    //       ),
+                                    // ),
+                                    // SizedBox(
+                                    //   height: Get.height * 0.01,
+                                    // ),
+                                    // Text(
+                                    //   controller.allRestaurantList[index]
+                                    //       ["description"],
+                                    //   overflow: TextOverflow.ellipsis,
+                                    //   style: Theme.of(context)
+                                    //       .textTheme
+                                    //       .bodyMedium!
+                                    //       .copyWith(
+                                    //         fontSize: Get.width * 0.03,
+                                    //       ),
+                                    // ),
+                                    // SizedBox(
+                                    //   height: Get.height * 0.01,
+                                    // ),
                                     Row(
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.delivery_dining,
                                           color: AppColors.logoColor,
                                         ),
@@ -268,8 +328,8 @@ class RestaurantsScreen extends StatelessWidget {
                                               .textTheme
                                               .bodyMedium,
                                         ),
-                                        Spacer(),
-                                        Icon(
+                                        const Spacer(),
+                                        const Icon(
                                           Icons.timer,
                                           color: AppColors.logoColor,
                                         ),
@@ -280,8 +340,8 @@ class RestaurantsScreen extends StatelessWidget {
                                               .textTheme
                                               .bodyMedium,
                                         ),
-                                        Spacer(),
-                                        Icon(
+                                        const Spacer(),
+                                        const Icon(
                                           Icons.star,
                                           color: AppColors.logoColor,
                                         ),
@@ -299,7 +359,10 @@ class RestaurantsScreen extends StatelessWidget {
                               )
                             ],
                           )),
-                    )
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.08,
+                    ),
                   ]),
             );
           },

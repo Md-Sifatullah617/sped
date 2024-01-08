@@ -127,7 +127,9 @@ class DiscoverScreen extends StatelessWidget {
                 // ),
                 Text(
                   "Soekarno Hatta 15A",
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: AppColors.logoColor,
+                      ),
                 ),
                 SizedBox(
                   width: Get.width * 0.02,
