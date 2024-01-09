@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sped/view/home/home_screen.dart';
 import 'package:sped/view/profile/add_address.dart';
+import 'package:sped/view/profile/edit_one_by_one.dart';
 import 'package:sped/view/profile/edit_profile.dart';
 import 'package:sped/view/profile/select_cities.dart';
 import 'package:sped/view/profile/themes_page.dart';
@@ -23,6 +24,7 @@ class AppRoutes {
   static const String addTheme = "/addThemePage";
   static const String selectCitiesOnMap = "/selectCitiesonMapPage";
   static const String editProfile = "/editProfilePage";
+  static const String editOneByOne = "/editOneByOnePage";
 
   static List<GetPage> pages = [
     GetPage(
@@ -71,6 +73,10 @@ class AppRoutes {
     GetPage(
       name: editProfile,
       page: () => const EditProfileScreen(),
+    ),
+    GetPage(
+      name: editOneByOne,
+      page: () => const EditOneByOneScreen(),
     ),
   ];
 }

@@ -17,6 +17,12 @@ String rFood3 = "assets/images/food14.png";
 String rFood4 = "assets/images/food15.png";
 String staticMap = "assets/images/map.png";
 String deliveryBikeMan = "assets/images/deliverybikeman.png";
+String manWritingPaper = "assets/images/Character.png";
+String whiteScreenMobile = "assets/images/Device.png";
+String darkScreenMobile = "assets/images/Device (1).png";
+String usingMobile = "assets/images/Frame.png";
+String groupDiscussion = "assets/images/Group.png";
+String searchingFile = "assets/images/Speech_Bubble.png";
 
 //icons
 String homeIcon = "assets/icons/home.png";

@@ -67,27 +67,116 @@ class EditProfileScreen extends StatelessWidget {
                       SizedBox(
                         height: Get.height * 0.01,
                       ),
-                      Row(
-                        children: [
-                          Text("Profile picture"),
-                          Spacer(),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              avatar,
-                              height: Get.height * 0.04,
-                              width: Get.height * 0.04,
-                              fit: BoxFit.cover,
+                      InkWell(
+                        onTap: () {
+                          Get.bottomSheet(
+                            Container(
+                              height: Get.height * 0.31,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: Get.width * 0.05,
+                                vertical: Get.height * 0.02,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Container(
+                                        height: Get.height * 0.04,
+                                        width: Get.height * 0.04,
+                                        decoration: const BoxDecoration(
+                                          color: AppColors.greyColor,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Icon(Icons.close),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Change profile picture",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  ListTile(
+                                    leading: const Icon(
+                                      Icons.camera,
+                                    ),
+                                    title: Text(
+                                      "Take photo",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium,
+                                    ),
+                                    visualDensity: VisualDensity.compact,
+                                  ),
+                                  ListTile(
+                                    onTap: () {},
+                                    leading: const Icon(
+                                      Icons.file_present_rounded,
+                                    ),
+                                    title: Text(
+                                      "Photo library",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium,
+                                    ),
+                                    visualDensity: VisualDensity.compact,
+                                  ),
+                                  ListTile(
+                                    leading: const Icon(
+                                      Icons.delete,
+                                      color: AppColors.redColor,
+                                    ),
+                                    title: Text("Delete profile picture",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium!
+                                            .copyWith(
+                                              color: AppColors.redColor,
+                                            )),
+                                    visualDensity: VisualDensity.compact,
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: Get.width * 0.02,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: Get.width * 0.04,
-                          ),
-                        ],
+                            backgroundColor: Colors.white,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(Get.width * 0.05),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Text("Profile picture"),
+                            Spacer(),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.asset(
+                                avatar,
+                                height: Get.height * 0.04,
+                                width: Get.height * 0.04,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.02,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: Get.width * 0.04,
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: Get.height * 0.01,
