@@ -7,6 +7,11 @@ class ProfileController extends GetxController {
   TextEditingController storeFlagCode = TextEditingController();
   TextEditingController pinCodeController = TextEditingController();
   var isTypingNum = false.obs;
+  var isEditEmail = false.obs;
+  var isEditName = false.obs;
+  var isDeleteAccount = false.obs;
+  var isApearence = false.obs;
+  var isCreditToken = false.obs;
   var verificationPage = false.obs;
   var isWelcomePage = false.obs;
   var isLocationTypeSelected = "".obs;

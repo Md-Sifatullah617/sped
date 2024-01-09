@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/custom_text_field.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
@@ -316,6 +313,7 @@ class ProfileDetailsPage extends StatelessWidget {
                             onPressed: () {
                               // controller.verificationPage.value = true;
                               // controller.update();
+                              controller.isTypingNum.value = false;
                               Get.toNamed(AppRoutes.homePage);
                             },
                           ),

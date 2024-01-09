@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
-import 'package:sped/utils/custom_widgets/custom_sheet.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
-import 'package:sped/utils/photos.dart';
 import 'package:sped/view/splash/controller/onboarding_controller.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -89,7 +87,7 @@ class OnBoardContent1 extends StatelessWidget {
             Spacer(),
             PrimaryBtn(
                 title: "Get Started",
-                hpadd: Get.width * 0.05,
+                // hpadd: Get.width * 0.05,
                 onPressed: () {
                   // customBottomSheet(context);
                   controller.currentPage.value = 1;

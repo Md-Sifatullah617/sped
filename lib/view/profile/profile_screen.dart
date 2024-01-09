@@ -91,50 +91,56 @@ class ProfileScreen extends StatelessWidget {
                         ]),
                   ),
                 ),
-                Container(
-                  width: Get.width,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Get.width * 0.05,
-                    vertical: Get.height * 0.02,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(Get.width * 0.05),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text("Tokens"),
-                          Spacer(),
-                          Text("0x"),
-                          SizedBox(
-                            width: Get.width * 0.02,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: Get.width * 0.04,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.02,
-                      ),
-                      Row(
-                        children: [
-                          Text("Credits"),
-                          Spacer(),
-                          Text("000 €"),
-                          SizedBox(
-                            width: Get.width * 0.02,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: Get.width * 0.04,
-                          ),
-                        ],
-                      )
-                    ],
+                InkWell(
+                  onTap: () {
+                    controller.isCreditToken.value = true;
+                    Get.toNamed(AppRoutes.editOneByOne);
+                  },
+                  child: Container(
+                    width: Get.width,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Get.width * 0.05,
+                      vertical: Get.height * 0.02,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(Get.width * 0.05),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text("Tokens"),
+                            Spacer(),
+                            Text("0x"),
+                            SizedBox(
+                              width: Get.width * 0.02,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: Get.width * 0.04,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: Get.height * 0.02,
+                        ),
+                        Row(
+                          children: [
+                            Text("Credits"),
+                            Spacer(),
+                            Text("000 €"),
+                            SizedBox(
+                              width: Get.width * 0.02,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: Get.width * 0.04,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Container(

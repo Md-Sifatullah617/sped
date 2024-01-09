@@ -22,7 +22,7 @@ class SearchScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: Get.height * 0.02,
+                height: Get.height * 0.05,
               ),
               Container(
                 height: Get.height * 0.06,
@@ -126,9 +126,6 @@ class SearchScreen extends StatelessWidget {
                           )
                         : const SizedBox(),
                   )),
-              SizedBox(
-                height: Get.height * 0.02,
-              ),
               Expanded(
                 child: ListView.builder(
                     shrinkWrap: true,
