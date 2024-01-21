@@ -38,4 +38,54 @@ class RestaurantController extends GetxController {
       "rating": "3.5",
     },
   ];
+
+  List foodList = [
+    'Potata',
+    'Pizza',
+    'Burger',
+    'Pasta',
+    'Salad',
+    'Soup',
+    'Dessert',
+    'Drinks',
+    'Biriyanis',
+    'Breads',
+    'Rice',
+  ];
+  var selectedFoodIndex = 0.obs;
+
+  List pizzatList = [
+    {
+      "name": "Margherita",
+      "image": food1,
+      "price": "€ 5.00",
+      "ingredents": "Tomato sauce, mozzarella, basil",
+    },
+    {
+      "name": "Marinara",
+      "image": food2,
+      "price": "€ 6.00",
+      "ingredents": "Tomato sauce, garlic",
+    },
+    {
+      "name": "Quattro Stagioni",
+      "image": food3,
+      "price": "€ 7.00",
+      "ingredents":
+          "Tomato sauce, mozzarella, mushrooms, ham, artichokes, olives, basil",
+    },
+    {
+      "name": "Carbonara",
+      "image": food4,
+      "price": "€ 8.00",
+      "ingredents":
+          "Tomato sauce, mozzarella, mushrooms, ham, artichokes, olives, basil",
+    },
+    {
+      "name": "Frutti di Mare",
+      "image": food5,
+      "price": "€ 9.00",
+      "ingredents": "Tomato sauce, mozzarella, seafood",
+    },
+  ];
 }

@@ -5,6 +5,8 @@ import 'package:sped/view/profile/edit_one_by_one.dart';
 import 'package:sped/view/profile/edit_profile.dart';
 import 'package:sped/view/profile/select_cities.dart';
 import 'package:sped/view/profile/themes_page.dart';
+import 'package:sped/view/restaurants/more_food_cat.dart';
+import 'package:sped/view/restaurants/restaurant_details.dart';
 import 'package:sped/view/splash/onboardin.dart';
 import 'package:sped/view/splash/splash.dart';
 import 'package:sped/view/stores/check_email.dart';
@@ -25,6 +27,8 @@ class AppRoutes {
   static const String selectCitiesOnMap = "/selectCitiesonMapPage";
   static const String editProfile = "/editProfilePage";
   static const String editOneByOne = "/editOneByOnePage";
+  static const String restaurantDetails = "/restaurantDetailsPage";
+  static const String moreFoodCategory = "/moreFoodCategoryPage";
 
   static List<GetPage> pages = [
     GetPage(
@@ -77,6 +81,14 @@ class AppRoutes {
     GetPage(
       name: editOneByOne,
       page: () => const EditOneByOneScreen(),
+    ),
+    GetPage(
+      name: restaurantDetails,
+      page: () => const RestaurantDetailsPage(),
+    ),
+    GetPage(
+      name: moreFoodCategory,
+      page: () => const MoreFoodCategoryPage(),
     ),
   ];
 }

@@ -6,11 +6,16 @@ class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color facebookColor = Color(0xFF3B5998);
   static const Color logoColor = Color(0xFFFF6600);
+
+  static const Color orangeColor = Color(0xFFFF6600);
   static const Color redColor = Color(0xFFE02020);
   static const Color greyColor = Color(0xFFE0E0E0);
   static const Color fedBlue = Color(0xFF0B72B9);
   static const Color btnColor2 = Color(0xFFFED8CC);
   static const Color btnColor3 = Color(0xFFFFF3EB);
+
   static const Color onboardBgc = Color(0xFFFAF4F0);
   static const Color greyColor2 = Color(0xFFF2EFED);
+
+  static const Color greyColor3 = Color(0xFFEBE5E1);
 }

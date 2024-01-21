@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
 
 class PrimaryBtn extends StatelessWidget {
-  final String title;
+  final String? title;
   final Color? titleColor;
   final Color? btnColor;
   final Function() onPressed;
   final double? hpadd;
+  final double? buttonHPadd;
   final IconData? icon;
   final String? iconImage;
   final Color? iconColor;
@@ -17,12 +18,14 @@ class PrimaryBtn extends StatelessWidget {
   final bool? isLeftAligned;
   final bool? isRightAligned;
   final Color? borderColor;
+  final Widget? extraWidget;
   const PrimaryBtn({
     super.key,
-    required this.title,
+    this.title,
     required this.onPressed,
     this.btnColor,
     this.hpadd,
+    this.buttonHPadd,
     this.icon,
     this.titleColor,
     this.iconColor,
@@ -33,6 +36,7 @@ class PrimaryBtn extends StatelessWidget {
     this.borderColor,
     this.isLeftAligned,
     this.isRightAligned,
+    this.extraWidget,
   });
 
   @override
@@ -48,7 +52,7 @@ class PrimaryBtn extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               backgroundColor: btnColor ?? AppColors.logoColor,
               padding: EdgeInsets.symmetric(
-                horizontal: Get.height * 0.02,
+                horizontal: buttonHPadd ?? Get.height * 0.02,
               ),
               maximumSize: Size(width ?? Get.width, Get.height * 0.06),
               shape: RoundedRectangleBorder(
@@ -70,12 +74,14 @@ class PrimaryBtn extends StatelessWidget {
                 ),
               if (iconImage != null) Image.asset(iconImage!),
               if (isLeftAligned ?? true) const Spacer(),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: titleColor ?? AppColors.white,
+              title == null
+                  ? extraWidget ?? Container()
+                  : Text(
+                      title!,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: titleColor ?? AppColors.white,
+                          ),
                     ),
-              ),
               if (isRightAligned ?? true) const Spacer(),
             ],
           ),
