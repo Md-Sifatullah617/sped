@@ -25,6 +25,9 @@ String groupDiscussion = "assets/images/Group.png";
 String searchingFile = "assets/images/Speech_Bubble.png";
 String recommandation = "assets/images/recommandation1.jpg";
 String recommandation2 = "assets/images/recommandation2.jpg";
+String payment1 = "assets/images/payment1.png";
+String payment2 = "assets/images/payment2.png";
+String payment3 = "assets/images/payment3.png";
 
 //icons
 String homeIcon = "assets/icons/home.png";
