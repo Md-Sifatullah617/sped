@@ -366,14 +366,6 @@ class RestaurantDetailsPage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
-          // child: PrimaryBtn(
-          //   onPressed: () {},
-          //   title: "View order",
-          //   titleColor: AppColors.white,
-          //   width: Get.width,
-          //   buttonHPadd: 0,
-          //   btnColor: AppColors.logoColor,
-          // ),
           child: Container(
             height: Get.height * 0.06,
             width: Get.width,

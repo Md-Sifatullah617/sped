@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sped/view/checkout/checkout_page.dart';
 import 'package:sped/view/home/home_screen.dart';
 import 'package:sped/view/profile/add_address.dart';
 import 'package:sped/view/profile/edit_one_by_one.dart';
@@ -7,6 +8,7 @@ import 'package:sped/view/profile/select_cities.dart';
 import 'package:sped/view/profile/themes_page.dart';
 import 'package:sped/view/restaurants/more_food_cat.dart';
 import 'package:sped/view/restaurants/restaurant_details.dart';
+import 'package:sped/view/restaurants/your_order.dart';
 import 'package:sped/view/splash/onboardin.dart';
 import 'package:sped/view/splash/splash.dart';
 import 'package:sped/view/stores/check_email.dart';
@@ -29,6 +31,8 @@ class AppRoutes {
   static const String editOneByOne = "/editOneByOnePage";
   static const String restaurantDetails = "/restaurantDetailsPage";
   static const String moreFoodCategory = "/moreFoodCategoryPage";
+  static const String yourOrder = "/yourOrderPage";
+  static const String checkout = "/checkoutPage";
 
   static List<GetPage> pages = [
     GetPage(
@@ -89,6 +93,14 @@ class AppRoutes {
     GetPage(
       name: moreFoodCategory,
       page: () => const MoreFoodCategoryPage(),
+    ),
+    GetPage(
+      name: yourOrder,
+      page: () => const YourOrderScreen(),
+    ),
+    GetPage(
+      name: checkout,
+      page: () => const CheckOutScreen(),
     ),
   ];
 }

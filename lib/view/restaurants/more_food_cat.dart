@@ -4,6 +4,7 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/custom_checkbox.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
+import 'package:sped/utils/routes/app_routes.dart';
 
 class MoreFoodCategoryPage extends StatelessWidget {
   const MoreFoodCategoryPage({super.key});
@@ -354,35 +355,43 @@ class MoreFoodCategoryPage extends StatelessWidget {
           //add to cart button
           Expanded(
             flex: 2,
-            child: Container(
-              height: Get.height * 0.06,
-              margin: EdgeInsets.symmetric(
-                horizontal: Get.width * 0.02,
-              ),
-              padding: EdgeInsets.symmetric(
-                vertical: Get.height * 0.005,
-                horizontal: Get.width * 0.05,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.logoColor,
-                borderRadius: BorderRadius.circular(Get.width * 0.02),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    'Add to cart',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: AppColors.white,
-                        ),
-                  ),
-                  Spacer(),
-                  Text(
-                    '€ 5.00',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: AppColors.white,
-                        ),
-                  ),
-                ],
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.yourOrder, arguments: {
+                  'restaurantName': Get.arguments['restaurantName'],
+                  "moreCategories": Get.arguments['moreCategories'],
+                });
+              },
+              child: Container(
+                height: Get.height * 0.06,
+                margin: EdgeInsets.symmetric(
+                  horizontal: Get.width * 0.02,
+                ),
+                padding: EdgeInsets.symmetric(
+                  vertical: Get.height * 0.005,
+                  horizontal: Get.width * 0.05,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.logoColor,
+                  borderRadius: BorderRadius.circular(Get.width * 0.02),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      'Add to cart',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            color: AppColors.white,
+                          ),
+                    ),
+                    Spacer(),
+                    Text(
+                      '€ 5.00',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            color: AppColors.white,
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
           )

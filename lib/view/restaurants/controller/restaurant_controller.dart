@@ -88,4 +88,27 @@ class RestaurantController extends GetxController {
       "ingredents": "Tomato sauce, mozzarella, seafood",
     },
   ];
+
+  var recommandationList = [
+    {
+      "title": "Chicken Nuggets 4 kpl + dippi",
+      "image": recommandation,
+      "price": "€ 9.00",
+    },
+    {
+      "title": "Burger",
+      "image": recommandation2,
+      "price": "€ 9.00",
+    },
+    {
+      "title": "Chicken Nuggets 4 kpl + dippi",
+      "image": recommandation,
+      "price": "€ 9.00",
+    },
+    {
+      "title": "Burger",
+      "image": recommandation2,
+      "price": "€ 9.00",
+    },
+  ];
 }

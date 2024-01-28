@@ -23,6 +23,8 @@ String darkScreenMobile = "assets/images/Device (1).png";
 String usingMobile = "assets/images/Frame.png";
 String groupDiscussion = "assets/images/Group.png";
 String searchingFile = "assets/images/Speech_Bubble.png";
+String recommandation = "assets/images/recommandation1.jpg";
+String recommandation2 = "assets/images/recommandation2.jpg";
 
 //icons
 String homeIcon = "assets/icons/home.png";
