@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final String? title;
   final Widget? suffixWidget;
   final bool? obscureText;
+  final double? height;
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixWidget,
     this.obscureText,
     this.validator,
+    this.height,
   });
 
   @override
@@ -35,7 +37,7 @@ class CustomTextField extends StatelessWidget {
           height: Get.height * 0.01,
         ),
         Container(
-          height: Get.height * 0.08,
+          height: height ?? Get.height * 0.08,
           width: Get.width,
           alignment: Alignment.center,
           decoration: BoxDecoration(

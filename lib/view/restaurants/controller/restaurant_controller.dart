@@ -28,6 +28,7 @@ class RestaurantController extends GetxController {
       "cost": "€3.50",
       "time": "15-20 min",
       "rating": "4.5",
+      "open": false,
     },
     {
       "image": food2,
@@ -36,6 +37,7 @@ class RestaurantController extends GetxController {
       "cost": "€2.50",
       "time": "25-40 min",
       "rating": "3.5",
+      "open": true,
     },
   ];
 

@@ -4,6 +4,7 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
+import 'package:sped/utils/routes/app_routes.dart';
 import 'package:sped/view/checkout/controller/checkout_controller.dart';
 
 class CheckOutScreen extends StatelessWidget {
@@ -175,6 +176,9 @@ class CheckOutScreen extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () {
+                  Get.toNamed(AppRoutes.deliveryMap);
+                },
                 leading: Image.asset(
                   clockIcon,
                   height: Get.height * 0.06,

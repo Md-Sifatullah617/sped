@@ -209,12 +209,37 @@ class RestaurantsScreen extends StatelessWidget {
                                         topRight:
                                             Radius.circular(Get.width * 0.05),
                                       ),
-                                      child: Image.asset(
-                                        controller.allRestaurantList[index]
-                                            ["image"],
+                                      child: Container(
                                         height: Get.height * 0.25,
                                         width: Get.width,
-                                        fit: BoxFit.cover,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(controller
+                                                    .allRestaurantList[index]
+                                                ["image"]),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        child: Container(
+                                          color: controller
+                                                      .allRestaurantList[index]
+                                                  ["open"]
+                                              ? Colors.transparent
+                                              : AppColors.logoColor.withOpacity(
+                                                  0.2), // adjust color and opacity as needed
+                                          child: Center(
+                                            child: Text(
+                                              "Closed",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge!
+                                                  .copyWith(
+                                                    color: AppColors.logoColor,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     //isfav icon top right corner
@@ -235,6 +260,18 @@ class RestaurantsScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
+                                    Positioned(
+                                        bottom: Get.height * 0.01,
+                                        right: Get.width * 0.03,
+                                        child: Text(
+                                          "Open in 5 hours",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        )),
                                   ],
                                 ),
                                 Padding(
@@ -286,7 +323,10 @@ class RestaurantsScreen extends StatelessWidget {
                                           ),
                                           child: Text(
                                               textAlign: TextAlign.center,
-                                              "20-30\nmin",
+                                              controller.allRestaurantList[
+                                                      index]["open"]
+                                                  ? "20-30\nmin"
+                                                  : "Closed",
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyMedium!
