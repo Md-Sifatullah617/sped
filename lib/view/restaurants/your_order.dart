@@ -79,7 +79,7 @@ class YourOrderScreen extends StatelessWidget {
                   PrimaryBtn(
                     onPressed: () {},
                     title: '+ Add More',
-                    width: Get.width * 0.3,
+                    width: Get.width * 0.31,
                     height: Get.height * 0.04,
                   ),
                 ],

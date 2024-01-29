@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:sped/view/checkout/add_new_cart.dart';
 import 'package:sped/view/checkout/checkout_page.dart';
+import 'package:sped/view/checkout/delivary_address_details.dart';
 import 'package:sped/view/checkout/delivery_map.dart';
 import 'package:sped/view/home/home_screen.dart';
 import 'package:sped/view/profile/add_address.dart';
@@ -35,6 +37,8 @@ class AppRoutes {
   static const String yourOrder = "/yourOrderPage";
   static const String checkout = "/checkoutPage";
   static const String deliveryMap = "/deliveryMapPage";
+  static const String deliveryAddressDetails = "/deliveryAddressDetailsPage";
+  static const String addNewCart = "/addNewCartPage";
 
   static List<GetPage> pages = [
     GetPage(
@@ -107,6 +111,14 @@ class AppRoutes {
     GetPage(
       name: deliveryMap,
       page: () => const DeliveryMapPage(),
+    ),
+    GetPage(
+      name: deliveryAddressDetails,
+      page: () => const DeliveryAddressDetailsPage(),
+    ),
+    GetPage(
+      name: addNewCart,
+      page: () => const AddNewCartPage(),
     ),
   ];
 }

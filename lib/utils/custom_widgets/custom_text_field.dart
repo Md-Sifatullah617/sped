@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData? prefixIcon;
   final String? title;
+  final Color? titleColor;
   final Widget? suffixWidget;
   final bool? obscureText;
   final double? height;
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.prefixIcon,
     this.title,
+    this.titleColor,
     this.isCountryPicker,
     this.suffixWidget,
     this.obscureText,
@@ -32,7 +34,10 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null)
-          Text(title!, style: Theme.of(context).textTheme.bodyLarge),
+          Text(title!,
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: titleColor ?? AppColors.black,
+                  )),
         SizedBox(
           height: Get.height * 0.01,
         ),

@@ -486,6 +486,9 @@ class CheckOutScreen extends StatelessWidget {
                                             .titleMedium,
                                       ),
                                       ListTile(
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes.addNewCart);
+                                        },
                                         leading: Icon(Icons.add),
                                         title: Text(
                                           "Add a new card",

@@ -625,6 +625,9 @@ class RestaurantDetailsPage extends StatelessWidget {
                                 ),
                               ),
                               ListTile(
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.deliveryAddressDetails);
+                                },
                                 visualDensity: VisualDensity.compact,
                                 leading: Icon(Icons.list_alt_outlined),
                                 title: Text(

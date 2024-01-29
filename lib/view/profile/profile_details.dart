@@ -58,7 +58,7 @@ class ProfileDetailsPage extends StatelessWidget {
               if (controller.isTypingNum.value)
                 SizedBox(
                   width: Get.width,
-                  height: Get.height * 0.85,
+                  height: Get.height * 0.8,
                   child: Column(
                     children: [
                       SizedBox(
@@ -329,117 +329,115 @@ class ProfileDetailsPage extends StatelessWidget {
               if (!controller.isTypingNum.value)
                 SizedBox(
                   width: Get.width,
-                  height: Get.height * 0.85,
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            showCountryPicker(
-                              context: context,
-                              useSafeArea: true,
-                              onSelect: (Country country) {
-                                controller.countryController.text =
-                                    "${country.flagEmoji} ${country.displayName}";
-                                controller.storeFlagCode.text =
-                                    "${country.flagEmoji} ${country.phoneCode}";
-                                controller.update();
-                                print('Select country: ${country.displayName}');
-                              },
-                            );
-                          },
-                          child: AbsorbPointer(
-                            child: CustomTextField(
-                              txtController: controller.countryController,
-                              hintText: "Country",
-                              suffixWidget: Icon(
-                                Icons.arrow_forward_ios,
-                                size: Get.width * 0.04,
-                              ),
+                  height: Get.height * 0.8,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          showCountryPicker(
+                            context: context,
+                            useSafeArea: true,
+                            onSelect: (Country country) {
+                              controller.countryController.text =
+                                  "${country.flagEmoji} ${country.displayName}";
+                              controller.storeFlagCode.text =
+                                  "${country.flagEmoji} ${country.phoneCode}";
+                              controller.update();
+                              print('Select country: ${country.displayName}');
+                            },
+                          );
+                        },
+                        child: AbsorbPointer(
+                          child: CustomTextField(
+                            txtController: controller.countryController,
+                            hintText: "Country",
+                            suffixWidget: Icon(
+                              Icons.arrow_forward_ios,
+                              size: Get.width * 0.04,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: Get.height * 0.01,
-                        ),
-                        const CustomTextField(
-                          hintText: "Email",
-                        ),
-                        SizedBox(
-                          height: Get.height * 0.01,
-                        ),
-                        const CustomTextField(
-                          hintText: "First name",
-                        ),
-                        SizedBox(
-                          height: Get.height * 0.01,
-                        ),
-                        const CustomTextField(
-                          hintText: "Last name",
-                        ),
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                        CheckboxListTile(
-                          value: true,
-                          onChanged: (value) {},
-                          controlAffinity: ListTileControlAffinity.leading,
-                          contentPadding: EdgeInsets.zero,
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "I’ve read and agree with the User Terms of Service. I understand that my personal data will be processed in accordance with Sped Privacy Statement.",
-                                style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.01,
+                      ),
+                      const CustomTextField(
+                        hintText: "Email",
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.01,
+                      ),
+                      const CustomTextField(
+                        hintText: "First name",
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.01,
+                      ),
+                      const CustomTextField(
+                        hintText: "Last name",
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      CheckboxListTile(
+                        value: true,
+                        onChanged: (value) {},
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.zero,
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "I’ve read and agree with the User Terms of Service. I understand that my personal data will be processed in accordance with Sped Privacy Statement.",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Text(
+                                "Read More",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      color: AppColors.logoColor,
+                                    ),
                               ),
-                              InkWell(
-                                onTap: () {},
-                                child: Text(
-                                  "Read More",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        color: AppColors.logoColor,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        CheckboxListTile(
-                          value: false,
-                          onChanged: (value) {},
-                          controlAffinity: ListTileControlAffinity.leading,
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            "I want to received special offers and promotions from Sped via push notification.",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                      ),
+                      CheckboxListTile(
+                        value: false,
+                        onChanged: (value) {},
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          "I want to received special offers and promotions from Sped via push notification.",
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        CheckboxListTile(
-                          value: false,
-                          onChanged: (value) {},
-                          controlAffinity: ListTileControlAffinity.leading,
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            "I want to received special offers and promotions from Sped via email.",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                      ),
+                      CheckboxListTile(
+                        value: false,
+                        onChanged: (value) {},
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(
+                          "I want to received special offers and promotions from Sped via email.",
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        const Spacer(),
-                        PrimaryBtn(
-                            title: "Next",
-                            onPressed: () {
-                              controller.isTypingNum.value = true;
-                              controller.update();
-                              // Get.toNamed(AppRoutes.homePage);
-                            }),
-                      ],
-                    ),
+                      ),
+                      const Spacer(),
+                      PrimaryBtn(
+                          title: "Next",
+                          onPressed: () {
+                            controller.isTypingNum.value = true;
+                            controller.update();
+                            // Get.toNamed(AppRoutes.homePage);
+                          }),
+                    ],
                   ),
                 ),
             ]),

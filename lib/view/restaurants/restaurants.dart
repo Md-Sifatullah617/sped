@@ -227,18 +227,24 @@ class RestaurantsScreen extends StatelessWidget {
                                               ? Colors.transparent
                                               : AppColors.logoColor.withOpacity(
                                                   0.2), // adjust color and opacity as needed
-                                          child: Center(
-                                            child: Text(
-                                              "Closed",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleLarge!
-                                                  .copyWith(
-                                                    color: AppColors.logoColor,
-                                                    fontWeight: FontWeight.bold,
+                                          child: controller
+                                                      .allRestaurantList[index]
+                                                  ["open"]
+                                              ? null
+                                              : Center(
+                                                  child: Text(
+                                                    "Closed",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleLarge!
+                                                        .copyWith(
+                                                          color: AppColors
+                                                              .logoColor,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
                                                   ),
-                                            ),
-                                          ),
+                                                ),
                                         ),
                                       ),
                                     ),
@@ -260,18 +266,20 @@ class RestaurantsScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Positioned(
-                                        bottom: Get.height * 0.01,
-                                        right: Get.width * 0.03,
-                                        child: Text(
-                                          "Open in 5 hours",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        )),
+                                    if (!controller.allRestaurantList[index]
+                                        ["open"])
+                                      Positioned(
+                                          bottom: Get.height * 0.01,
+                                          right: Get.width * 0.03,
+                                          child: Text(
+                                            "Open in 5 hours",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          )),
                                   ],
                                 ),
                                 Padding(
