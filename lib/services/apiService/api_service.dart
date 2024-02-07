@@ -1,96 +1,107 @@
-import 'package:http/http.dart' as http;
-import 'package:sped/services/apiService/errorHandling.dart';
+import 'package:dio/dio.dart';
+import 'package:sped/services/apiService/app_utils.dart';
+import 'package:sped/services/apiService/error_handling.dart';
 import 'package:sped/services/configs/appConfig.dart';
 
 class ApiService {
-  static Future<http.Response?> post({
-    required String url,
+  static Future<Response?> post({
+    required url,
     data,
-    Map<String, String>? headers,
+    Map<String, dynamic>? headers,
     bool isDomainUrl = false,
   }) async {
     print('Body:::${data.toString()}');
+    // print('USER ID : ${getStorage.read(userId)}');
     try {
-      final res = await http
+      final res = await dio
           .post(
-            Uri.parse((isDomainUrl == true ? domain : baseUrl) + url),
-            body: data,
-            headers: headers ??
-                {
-                  'Content-Type': 'application/json',
-                },
+            (isDomainUrl == true ? domain : baseUrl) + url,
+            data: data,
+            options: Options(
+              headers: headers ??
+                  {
+                    "Content-Type": "application/json",
+                  },
+            ),
           )
           .timeout(Duration(seconds: 30));
 
-      print(res.request?.url);
-      print(res.body);
+      print(res.realUri);
+      print(res.data);
       print(res.statusCode);
 
       if (res.statusCode == 201 || res.statusCode == 200) {
         return res;
       } else {
-        print(res.body.toString());
+        print(res.data.toString());
       }
-    } catch (e) {
+    } on DioException catch (e) {
       print(e);
       ErrorHandlerService.onError(e);
     }
     return null;
   }
 
-  static Future<http.Response?> get({
+//
+  static Future<Response?> get({
     required String url,
-    Map<String, String>? headers,
+    Map<String, dynamic>? headers,
     bool isDomainUrl = false,
   }) async {
-    print('URL : ${isDomainUrl == true ? domain : baseUrl}$url');
+    print('URL : ' +
+        (isDomainUrl == true ? domain : baseUrl).toString() +
+        '$url');
 
     print('isDomainUrl : $isDomainUrl');
 
-    final res = await http.get(
-      Uri.parse((isDomainUrl == true ? domain : baseUrl) + url),
-      headers: headers ??
-          {
-            'Content-Type': 'application/json',
-          },
+    final res = await dio.get(
+      (isDomainUrl == true ? domain : baseUrl) + url,
+      options: Options(
+        headers: headers ??
+            {
+              "Content-Type": "application/json",
+            },
+      ),
     );
 
-    // print(res.body);
-    print(res.request?.url);
+    // print(res.data);
+    print(res.realUri);
     print(res.statusCode);
 
     if (res.statusCode == 200) {
       return res;
     } else {
-      print(res.body);
+      print(res.data);
     }
     return null;
   }
 
-  static Future<http.Response?> delete({
-    required String url,
-    Map<String, String>? headers,
+  static Future<Response?> delete({
+    required url,
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final res = await http
+      final res = await dio
           .delete(
-            Uri.parse(baseUrl + url),
-            headers: headers ??
-                {
-                  'Content-Type': 'application/json',
-                },
+            baseUrl + url,
+            options: Options(
+              headers: headers ??
+                  {
+                    "Content-Type": "application/json",
+                  },
+            ),
           )
           .timeout(Duration(seconds: 30));
 
-      print(res.request?.url);
+      print(res.realUri);
       print(res.statusCode);
 
       if (res.statusCode == 200) {
         return res;
       } else {
-        print(res.body.toString());
+        print(res.data.toString());
       }
-    } catch (e) {
+    } on DioException catch (e) {
       print(e);
       ErrorHandlerService.onError(e);
     }
