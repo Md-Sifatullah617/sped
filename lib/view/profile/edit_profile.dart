@@ -624,18 +624,23 @@ class EditProfileScreen extends StatelessWidget {
                         SizedBox(
                           height: Get.height * 0.01,
                         ),
-                        Row(
-                          children: [
-                            Text("logout"),
-                            Spacer(),
-                            Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: Get.width * 0.04,
-                            ),
-                            SizedBox(
-                              width: Get.width * 0.02,
-                            ),
-                          ],
+                        InkWell(
+                          onTap: () {
+                            controller.logout();
+                          },
+                          child: Row(
+                            children: [
+                              Text("logout"),
+                              Spacer(),
+                              Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: Get.width * 0.04,
+                              ),
+                              SizedBox(
+                                width: Get.width * 0.02,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: Get.height * 0.01,

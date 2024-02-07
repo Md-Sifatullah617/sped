@@ -71,7 +71,8 @@ class ProfileScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      "Mahmudul Islam Shovon",
+                                      controller.userDetails[0].data!
+                                          .customerFullName!,
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme

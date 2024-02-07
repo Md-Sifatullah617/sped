@@ -5,6 +5,7 @@ import 'package:sped/view/checkout/delivary_address_details.dart';
 import 'package:sped/view/checkout/delivery_map.dart';
 import 'package:sped/view/home/home_screen.dart';
 import 'package:sped/view/profile/add_address.dart';
+import 'package:sped/view/profile/binding/profile_ctrl_binding.dart';
 import 'package:sped/view/profile/edit_one_by_one.dart';
 import 'package:sped/view/profile/edit_profile.dart';
 import 'package:sped/view/profile/select_cities.dart';
@@ -14,6 +15,7 @@ import 'package:sped/view/restaurants/restaurant_details.dart';
 import 'package:sped/view/restaurants/your_order.dart';
 import 'package:sped/view/splash/onboardin.dart';
 import 'package:sped/view/splash/splash.dart';
+import 'package:sped/view/stores/binding/auth_binding.dart';
 import 'package:sped/view/stores/check_email.dart';
 import 'package:sped/view/stores/inner_product_page.dart';
 import 'package:sped/view/stores/login_screen.dart';
@@ -49,12 +51,12 @@ class AppRoutes {
     GetPage(
       name: welcome,
       page: () => const OnboardingScreen(),
-      // binding: InitialBindings(),
+      binding: AuthBindings(),
     ),
     GetPage(
       name: homePage,
       page: () => const HomeScreen(),
-      // binding: HomePageBinding(),
+      binding: ProfileBinding(),
     ),
     GetPage(
       name: innerProductPage,
@@ -71,6 +73,7 @@ class AppRoutes {
     GetPage(
       name: profileDetails,
       page: () => const ProfileDetailsPage(),
+      binding: AuthBindings(),
     ),
     GetPage(
       name: addAddress,

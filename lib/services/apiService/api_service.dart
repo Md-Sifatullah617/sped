@@ -45,12 +45,10 @@ class ApiService {
 //
   static Future<Response?> get({
     required String url,
-    Map<String, dynamic>? headers,
+    Map<String, String>? headers,
     bool isDomainUrl = false,
   }) async {
-    print('URL : ' +
-        (isDomainUrl == true ? domain : baseUrl).toString() +
-        '$url');
+    print('URL : ${isDomainUrl == true ? domain : baseUrl}$url');
 
     print('isDomainUrl : $isDomainUrl');
 

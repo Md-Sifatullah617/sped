@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixWidget;
   final bool? obscureText;
   final double? height;
+  final bool? disableField;
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
@@ -26,6 +27,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureText,
     this.validator,
     this.height,
+    this.disableField = false,
   });
 
   @override
@@ -72,7 +74,11 @@ class CustomTextField extends StatelessWidget {
                         ),
               suffixIcon: suffixWidget,
               labelText: hintText,
-              enabled: isCountryPicker ?? false ? false : true,
+              enabled: disableField!
+                  ? true
+                  : isCountryPicker ?? false
+                      ? false
+                      : true,
               labelStyle: Theme.of(context).textTheme.bodyLarge,
               border: InputBorder.none,
               // fillColor: AppColors.fedBlue,

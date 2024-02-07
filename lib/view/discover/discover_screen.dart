@@ -6,9 +6,23 @@ import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
 import 'package:sped/utils/routes/app_routes.dart';
 import 'package:sped/view/discover/controller/discrover_controller.dart';
+import 'package:sped/view/profile/controller/profile_controller.dart';
 
-class DiscoverScreen extends StatelessWidget {
+class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
+
+  @override
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
+}
+
+class _DiscoverScreenState extends State<DiscoverScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.find<ProfileController>().getUserProfile();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

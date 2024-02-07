@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/services/apiService/api_service.dart';
 import 'package:sped/services/apiService/error_handling.dart';
+import 'package:sped/services/configs/appConfig.dart';
 import 'package:sped/utils/custom_widgets/custom_toast.dart';
 import 'package:sped/utils/dialog/loading_dialog.dart';
+import 'package:sped/utils/routes/app_routes.dart';
+import 'package:sped/utils/secure_storage.dart';
+import 'package:sped/view/home/home_screen.dart';
 
 class AuthController extends GetxController {
   final isLoading = false.obs;
@@ -90,8 +94,9 @@ class AuthController extends GetxController {
   void login(context) async {
     try {
       loadingDialog();
+      isLoading.value = true;
       final res = await ApiService.post(
-        url: '//login',
+        url: '/login',
         data: {
           "first_name": firstNameController.text, //required
           "last_name": lastNameController.text,
@@ -102,31 +107,31 @@ class AuthController extends GetxController {
         },
       );
 
+      print(">>>>>>> ${res!.data}");
+
       if (res!.data != null) {
-        if (res.data['status'] == 'success') {
+        if (res.statusCode == 200) {
+          isLoading.value = false;
           customToast(
             msg: res.data['message'],
           );
+          await SecureData.writeSecureData(
+              key: "userlogindetails", value: res.data);
+          token = res.data['data']['api_token'];
           Navigator.pop(context);
-          // Get.offAll(Home());
-        } else if (res.data['userId'] != null) {
-          customToast(
-            msg: res.data['message'],
-          );
-          // Get.to(OtpVerificationPage());
-        } else if (res.data['status'] == true) {
-          customToast(
-            msg: res.data['message'],
-          );
+          Get.offAllNamed(AppRoutes.homePage);
         } else {
+          isLoading.value = false;
+          Navigator.pop(context);
           customToast(
             msg: res.data['message'],
           );
         }
       }
     } catch (e) {
-      print(e);
+      isLoading.value = false;
       Navigator.pop(context);
+      print(e);
     }
   }
 

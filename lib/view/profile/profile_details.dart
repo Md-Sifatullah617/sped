@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/custom_text_field.dart';
+import 'package:sped/utils/custom_widgets/custom_toast.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/routes/app_routes.dart';
 import 'package:sped/view/profile/controller/profile_controller.dart';
+import 'package:sped/view/stores/controller/authController.dart';
 
 class ProfileDetailsPage extends StatelessWidget {
   const ProfileDetailsPage({super.key});
@@ -276,37 +278,24 @@ class ProfileDetailsPage extends StatelessWidget {
                               children: [
                                 Expanded(
                                   flex: 2,
-                                  child: InkWell(
-                                    onTap: () {
-                                      // showCountryPicker(
-                                      //   context: context,
-                                      //   useSafeArea: true,
-                                      //   onSelect: (Country country) {
-                                      //     controller.countryController.text =
-                                      //         "${country.flagEmoji} ${country.displayName}";
-                                      //     controller.update();
-                                      //     print('Select country: ${country.displayName}');
-                                      //   },
-                                      // );
-                                    },
-                                    child: AbsorbPointer(
-                                      child: CustomTextField(
-                                        txtController: controller.storeFlagCode,
-                                        hintText: "Country",
-                                        suffixWidget: Icon(
-                                          Icons.arrow_forward_ios,
-                                          size: Get.width * 0.04,
-                                        ),
-                                      ),
+                                  child: CustomTextField(
+                                    txtController: controller.storeFlagCode,
+                                    hintText: "Country",
+                                    suffixWidget: Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: Get.width * 0.04,
                                     ),
                                   ),
                                 ),
                                 SizedBox(
                                   width: Get.width * 0.02,
                                 ),
-                                const Expanded(
+                                Expanded(
                                     flex: 3,
                                     child: CustomTextField(
+                                        txtController:
+                                            Get.find<AuthController>()
+                                                .phoneController,
                                         hintText: "Phone number")),
                               ],
                             ),
@@ -316,8 +305,12 @@ class ProfileDetailsPage extends StatelessWidget {
                               onPressed: () {
                                 // controller.verificationPage.value = true;
                                 // controller.update();
-                                controller.isTypingNum.value = false;
-                                Get.toNamed(AppRoutes.homePage);
+                                try {
+                                  controller.isTypingNum.value = false;
+                                  Get.find<AuthController>().login(context);
+                                } catch (e) {
+                                  print('Error in onPressed: $e');
+                                }
                               },
                             ),
                           ],
@@ -345,8 +338,15 @@ class ProfileDetailsPage extends StatelessWidget {
                                   "${country.flagEmoji} ${country.displayName}";
                               controller.storeFlagCode.text =
                                   "${country.flagEmoji} ${country.phoneCode}";
+                              controller.countryCode.value = country.displayName
+                                  .split(' ')
+                                  .last
+                                  .replaceAll(RegExp(r'\[|\]'), '');
                               controller.update();
-                              print('Select country: ${country.displayName}');
+                              print(
+                                  'Select country: ${controller.countryController.text}');
+                              print(
+                                  'Select country 000: ${controller.storeFlagCode.text}');
                             },
                           );
                         },
@@ -364,27 +364,36 @@ class ProfileDetailsPage extends StatelessWidget {
                       SizedBox(
                         height: Get.height * 0.01,
                       ),
-                      const CustomTextField(
+                      CustomTextField(
+                        txtController:
+                            Get.find<AuthController>().emailController,
                         hintText: "Email",
                       ),
                       SizedBox(
                         height: Get.height * 0.01,
                       ),
-                      const CustomTextField(
+                      CustomTextField(
+                        txtController:
+                            Get.find<AuthController>().firstNameController,
                         hintText: "First name",
                       ),
                       SizedBox(
                         height: Get.height * 0.01,
                       ),
-                      const CustomTextField(
+                      CustomTextField(
+                        txtController:
+                            Get.find<AuthController>().lastNameController,
                         hintText: "Last name",
                       ),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       CheckboxListTile(
-                        value: true,
-                        onChanged: (value) {},
+                        value: controller.isTandc.value,
+                        onChanged: (value) {
+                          controller.isTandc.value = value!;
+                          controller.update();
+                        },
                         controlAffinity: ListTileControlAffinity.leading,
                         contentPadding: EdgeInsets.zero,
                         title: Column(
@@ -410,8 +419,11 @@ class ProfileDetailsPage extends StatelessWidget {
                         ),
                       ),
                       CheckboxListTile(
-                        value: false,
-                        onChanged: (value) {},
+                        value: controller.isSpecialOffer.value,
+                        onChanged: (value) {
+                          controller.isSpecialOffer.value = value!;
+                          controller.update();
+                        },
                         controlAffinity: ListTileControlAffinity.leading,
                         contentPadding: EdgeInsets.zero,
                         title: Text(
@@ -420,8 +432,11 @@ class ProfileDetailsPage extends StatelessWidget {
                         ),
                       ),
                       CheckboxListTile(
-                        value: false,
-                        onChanged: (value) {},
+                        value: controller.isSpecialOffer2.value,
+                        onChanged: (value) {
+                          controller.isSpecialOffer2.value = value!;
+                          controller.update();
+                        },
                         controlAffinity: ListTileControlAffinity.leading,
                         contentPadding: EdgeInsets.zero,
                         title: Text(
@@ -433,9 +448,37 @@ class ProfileDetailsPage extends StatelessWidget {
                       PrimaryBtn(
                           title: "Next",
                           onPressed: () {
-                            controller.isTypingNum.value = true;
-                            controller.update();
-                            // Get.toNamed(AppRoutes.homePage);
+                            //if any of the field is empty
+                            if (Get.find<AuthController>()
+                                        .emailController
+                                        .text ==
+                                    "" ||
+                                Get.find<
+                                            AuthController>()
+                                        .firstNameController
+                                        .text ==
+                                    "" ||
+                                Get.find<AuthController>()
+                                        .lastNameController
+                                        .text ==
+                                    "" ||
+                                controller.countryController.text == "") {
+                              customToast(
+                                msg: "Please fill all the fields",
+                                isError: true,
+                              );
+                              return;
+                            }
+                            if (controller.isTandc.value) {
+                              controller.isTypingNum.value = true;
+                              controller.update();
+                            } else {
+                              customToast(
+                                msg:
+                                    "Please agree with the terms and conditions",
+                                isError: true,
+                              );
+                            }
                           }),
                     ],
                   ),
