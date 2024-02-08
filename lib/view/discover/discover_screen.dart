@@ -7,6 +7,7 @@ import 'package:sped/utils/photos.dart';
 import 'package:sped/utils/routes/app_routes.dart';
 import 'package:sped/view/discover/controller/discrover_controller.dart';
 import 'package:sped/view/profile/controller/profile_controller.dart';
+import 'package:sped/view/restaurants/controller/restaurant_controller.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -20,6 +21,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.find<ProfileController>().getUserProfile();
+      Get.find<RestaurantController>().fetchRestaurant();
+      Get.find<RestaurantController>().fetchCatagory();
     });
     super.initState();
   }

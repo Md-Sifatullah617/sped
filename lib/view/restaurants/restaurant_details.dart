@@ -13,6 +13,7 @@ class RestaurantDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var index = Get.arguments;
     return GetBuilder<RestaurantController>(
       init: RestaurantController(),
       builder: (controller) => Scaffold(
@@ -22,8 +23,9 @@ class RestaurantDetailsPage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Image.asset(
-                    Get.arguments["image"],
+                  Image.network(
+                    controller
+                        .restaurantDetailsList.data![index].restaurantImage!,
                     width: Get.width,
                     height: Get.height * 0.35,
                     fit: BoxFit.cover,
@@ -86,7 +88,9 @@ class RestaurantDetailsPage extends StatelessWidget {
                     ListTile(
                       visualDensity: VisualDensity.compact,
                       contentPadding: EdgeInsets.zero,
-                      title: Text(Get.arguments["title"],
+                      title: Text(
+                          controller.restaurantDetailsList.data![index]
+                              .restaurantName!,
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium!
@@ -95,7 +99,8 @@ class RestaurantDetailsPage extends StatelessWidget {
                                 fontSize: Get.width * 0.05,
                               )),
                       subtitle: Text(
-                        Get.arguments["description"],
+                        controller.restaurantDetailsList.data![index]
+                            .restaurantShortDescription!,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       trailing: Icon(
@@ -243,7 +248,8 @@ class RestaurantDetailsPage extends StatelessWidget {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: const Icon(Icons.search),
-                            hintText: "Search ${Get.arguments["title"]}",
+                            hintText:
+                                "Search ${controller.foodList[controller.selectedFoodIndex.value]}",
                             hintStyle: const TextStyle(
                               color: Colors.grey,
                             ),

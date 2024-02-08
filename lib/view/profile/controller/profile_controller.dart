@@ -92,7 +92,7 @@ class ProfileController extends GetxController {
       print(">>>>>>> ${res!.data}");
       print(">>>>>>> ${token}");
 
-      if (res!.data != null) {
+      if (res.data != null) {
         if (res.statusCode == 200) {
           isLoading.value = false;
           userDetails.add(UserDetailsModel.fromJson(res.data));

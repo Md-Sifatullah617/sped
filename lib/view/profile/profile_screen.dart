@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sped/services/configs/appConfig.dart';
 import 'package:sped/utils/colors.dart';
 import 'package:sped/utils/custom_widgets/primary_button.dart';
 import 'package:sped/utils/photos.dart';
@@ -73,6 +74,7 @@ class ProfileScreen extends StatelessWidget {
                                     Text(
                                       controller.userDetails[0].data!
                                           .customerFullName!,
+                                      // data["data"]['customerFullName'],
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme

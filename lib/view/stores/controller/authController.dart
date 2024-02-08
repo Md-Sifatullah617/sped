@@ -109,7 +109,7 @@ class AuthController extends GetxController {
 
       print(">>>>>>> ${res!.data}");
 
-      if (res!.data != null) {
+      if (res.data != null) {
         if (res.statusCode == 200) {
           isLoading.value = false;
           customToast(
@@ -118,6 +118,7 @@ class AuthController extends GetxController {
           await SecureData.writeSecureData(
               key: "userlogindetails", value: res.data);
           token = res.data['data']['api_token'];
+          data = res.data['data'];
           Navigator.pop(context);
           Get.offAllNamed(AppRoutes.homePage);
         } else {

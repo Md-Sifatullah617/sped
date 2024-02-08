@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
+import 'package:sped/services/apiService/api_service.dart';
+import 'package:sped/services/configs/appConfig.dart';
 import 'package:sped/utils/photos.dart';
+import 'package:sped/view/restaurants/model/catagory_model.dart';
+import 'package:sped/view/restaurants/model/restaurant_model.dart';
 
 class RestaurantController extends GetxController {
   List categoriesList = [
@@ -113,4 +117,68 @@ class RestaurantController extends GetxController {
       "price": "€ 9.00",
     },
   ];
+
+  late RestaurantDetailsModel restaurantDetailsList;
+  late CatagoryDetailsModel catagoryDetailsList;
+  var isLoading = false.obs;
+
+  Future<void> fetchRestaurant() async {
+    var token = data["data"]['api_token'];
+    try {
+      isLoading.value = true;
+      final res = await ApiService.get(
+        url: '/restaurants/fin/espoo',
+        headers: {
+          "Authorization": "Bearer $token",
+          "Content-Type": "application/json",
+        },
+      );
+
+      print(">>>>>>> ${res!.data}");
+      print(">>>>>>> ${token}");
+
+      if (res.data != null) {
+        if (res.statusCode == 200) {
+          isLoading.value = false;
+          restaurantDetailsList = RestaurantDetailsModel.fromJson(res.data);
+          print(">>>>>>> ${restaurantDetailsList.data!.length}");
+        } else {
+          isLoading.value = false;
+        }
+      }
+    } catch (e) {
+      isLoading.value = false;
+      print(e);
+    }
+  }
+
+  Future<void> fetchCatagory() async {
+    var token = data["data"]['api_token'];
+    try {
+      isLoading.value = true;
+      final res = await ApiService.get(
+        url: '/categories/fin/espoo?items=10',
+        headers: {
+          "Authorization": "Bearer $token",
+          "Content-Type": "application/json",
+        },
+      );
+
+      print(">>>>>>> ${res!.data}");
+      print(">>>>>>> ${token}");
+
+      if (res.data != null) {
+        if (res.statusCode == 200) {
+          isLoading.value = false;
+          catagoryDetailsList = CatagoryDetailsModel.fromJson(res.data);
+          print(">>>>>>> ${restaurantDetailsList.data!.length}");
+        } else {
+          isLoading.value = false;
+        }
+      }
+    } catch (e) {
+      isLoading.value = false;
+      print(e);
+    }
+  }
 }

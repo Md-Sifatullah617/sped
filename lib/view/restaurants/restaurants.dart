@@ -110,7 +110,7 @@ class RestaurantsScreen extends StatelessWidget {
                     SizedBox(
                       height: Get.height * 0.22,
                       child: ListView.builder(
-                        itemCount: controller.categoriesList.length,
+                        itemCount: controller.catagoryDetailsList.data!.length,
                         shrinkWrap: true,
                         padding: EdgeInsets.only(
                           left: Get.width * 0.05,
@@ -134,19 +134,22 @@ class RestaurantsScreen extends StatelessWidget {
                                 borderRadius:
                                     BorderRadius.circular(Get.width * 0.02),
                                 image: DecorationImage(
-                                  image: AssetImage(
-                                    controller.categoriesList[index]["image"],
+                                  image: NetworkImage(
+                                    controller.catagoryDetailsList.data![index]
+                                        .categoryImage!,
                                   ),
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                             Text(
-                              controller.categoriesList[index]["title"],
+                              controller.catagoryDetailsList.data![index]
+                                  .categoryName!,
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             Text(
-                              controller.categoriesList[index]["subtitle"],
+                              controller.catagoryDetailsList.data![index]
+                                  .categoryRestaurantsCount!,
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
                           ],
@@ -170,12 +173,12 @@ class RestaurantsScreen extends StatelessWidget {
                       ),
                     ),
                     ...List.generate(
-                      controller.allRestaurantList.length,
+                      controller.restaurantDetailsList.data!.length,
                       (index) => InkWell(
                         onTap: () {
                           Get.toNamed(
                             AppRoutes.restaurantDetails,
-                            arguments: controller.allRestaurantList[index],
+                            arguments: index,
                           );
                         },
                         child: Container(
@@ -214,22 +217,27 @@ class RestaurantsScreen extends StatelessWidget {
                                         width: Get.width,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
-                                            image: AssetImage(controller
-                                                    .allRestaurantList[index]
-                                                ["image"]),
+                                            image: NetworkImage(controller
+                                                .restaurantDetailsList
+                                                .data![index]
+                                                .restaurantImage!),
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                         child: Container(
                                           color: controller
-                                                      .allRestaurantList[index]
-                                                  ["open"]
+                                                      .restaurantDetailsList
+                                                      .data![index]
+                                                      .restaurantStatus ==
+                                                  "Open"
                                               ? Colors.transparent
                                               : AppColors.logoColor.withOpacity(
                                                   0.2), // adjust color and opacity as needed
                                           child: controller
-                                                      .allRestaurantList[index]
-                                                  ["open"]
+                                                      .restaurantDetailsList
+                                                      .data![index]
+                                                      .restaurantStatus ==
+                                                  "Open"
                                               ? null
                                               : Center(
                                                   child: Text(
@@ -266,8 +274,9 @@ class RestaurantsScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    if (!controller.allRestaurantList[index]
-                                        ["open"])
+                                    if (controller.restaurantDetailsList
+                                            .data![index].restaurantStatus !=
+                                        "Open")
                                       Positioned(
                                           bottom: Get.height * 0.01,
                                           right: Get.width * 0.03,
@@ -296,8 +305,8 @@ class RestaurantsScreen extends StatelessWidget {
                                         contentPadding: EdgeInsets.zero,
                                         visualDensity: VisualDensity.compact,
                                         title: Text(
-                                          controller.allRestaurantList[index]
-                                              ["title"],
+                                          controller.restaurantDetailsList
+                                              .data![index].restaurantName!,
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleLarge!
@@ -308,8 +317,10 @@ class RestaurantsScreen extends StatelessWidget {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          controller.allRestaurantList[index]
-                                              ["description"],
+                                          controller
+                                              .restaurantDetailsList
+                                              .data![index]
+                                              .restaurantShortDescription!,
                                           overflow: TextOverflow.ellipsis,
                                           style: Theme.of(context)
                                               .textTheme
@@ -331,9 +342,15 @@ class RestaurantsScreen extends StatelessWidget {
                                           ),
                                           child: Text(
                                               textAlign: TextAlign.center,
-                                              controller.allRestaurantList[
-                                                      index]["open"]
-                                                  ? "20-30\nmin"
+                                              controller
+                                                          .restaurantDetailsList
+                                                          .data![index]
+                                                          .restaurantStatus ==
+                                                      "Open"
+                                                  ? controller
+                                                      .restaurantDetailsList
+                                                      .data![index]
+                                                      .restaurantDeliveryTime!
                                                   : "Closed",
                                               style: Theme.of(context)
                                                   .textTheme
@@ -403,8 +420,8 @@ class RestaurantsScreen extends StatelessWidget {
                                             color: AppColors.logoColor,
                                           ),
                                           Text(
-                                            controller.allRestaurantList[index]
-                                                ["rating"],
+                                            controller.restaurantDetailsList
+                                                .data![index].restaurantRating!,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium,
